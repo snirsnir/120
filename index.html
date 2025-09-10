@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>נשים מובילות מדע - תוכנית יזמות מדעית</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Bellefair&family=Outfit:wght@100..900&family=Playpen+Sans+Hebrew:wght@100..800&family=Varela+Round&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --technoda-blue: #6B9BD1;
+            --technoda-turquoise: #7DD3C6;
+            --technoda-green: #9FE86D;
+            --technoda-purple: #A584E8;
+            --technoda-magenta: #E85D75;
+            --technoda-orange: #F7B955;
+            --technoda-yellow: #F8E755;
+            --nashim-purple: #D657A3;
+            --astra-purple: #B8436B;
+            --dark-bg: #2C3E50;
+            --light-bg: #F8F9FA;
+        }
+
+        body {
+            font-family: 'Varela Round', 'Arimo', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .section {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 40px 20px;
+        }
+
+        /* Navigation dots */
+        .nav-dots {
+            position: fixed;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: var(--technoda-blue);
+            transform: scale(1.3);
+        }
+
+        /* Animated background elements */
+        .bg-element {
+            position: absolute;
+            opacity: 0.15;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .molecule {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, var(--technoda-turquoise), transparent);
+            border-radius: 50%;
+        }
+
+        .dna-strand {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, var(--technoda-green), var(--technoda-blue));
+            transform: rotate(45deg);
+            border-radius: 15px;
+        }
+
+        .circuit {
+            width: 100px;
+            height: 100px;
+            border: 2px solid var(--technoda-orange);
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .circuit::before {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background: var(--technoda-orange);
+            top: 50%;
+            left: 25%;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+
+        /* Section 1 - Hero */
+.section-1 {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 30%, #0f3460 60%, #2c5f2d 100%);
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+        .section-1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(123, 211, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(159, 232, 109, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(247, 185, 85, 0.3) 0%, transparent 50%);
+        }
+
+.hero-content {
+    z-index: 10;
+    animation: fadeInUp 2s ease;
+    max-width: 1400px; /* הגדלת הרוחב */
+    width: 100%;
+    position: relative;
+}
+
+.logos-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px; /* הגדל את הרווח */
+    margin-bottom: 80px;
+    padding: 0 20px; /* הקטן את הפדינג */
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.logo {
+    max-height: 140px;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    display: flex;
+    align-items: center;
+}
+
+/* תיקון ספציפי לטכנודע */
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+.main-title {
+    font-size: 6rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #00ff88, #00cc6a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+            margin: 60px 0;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            font-family: 'Outfit', 'Varela Round', sans-serif;
+        }
+
+        .subtitle {
+            font-size: 2.2rem;
+            margin-bottom: 80px;
+            color: #ffffff;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            z-index: 20;
+        }
+
+        .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-top: 25px solid var(--technoda-blue);
+            margin: 8px auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-15px); }
+            60% { transform: translateX(-50%) translateY(-8px); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section 2 - Vision */
+        .section-2 {
+            background: linear-gradient(135deg, #E8F4F8 0%, #D1E9F0 100%);
+            color: var(--dark-bg);
+        }
+
+        .vision-content {
+            max-width: 1400px;
+            text-align: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        .section-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--technoda-blue);
+            margin-bottom: 40px;
+            font-family: 'Outfit', 'Varela Round', sans-serif;
+        }
+
+        .vision-subtitle {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--nashim-purple);
+            margin-bottom: 60px;
+            line-height: 1.4;
+        }
+
+        .points-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .point-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .point-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--technoda-turquoise), var(--technoda-green));
+        }
+
+        .point-card:nth-child(2)::before {
+            background: linear-gradient(90deg, var(--technoda-green), var(--technoda-yellow));
+        }
+        .point-card:nth-child(3)::before {
+            background: linear-gradient(90deg, var(--technoda-orange), var(--technoda-magenta));
+        }
+        .point-card:nth-child(4)::before {
+            background: linear-gradient(90deg, var(--technoda-purple), var(--nashim-purple));
+        }
+        .point-card:nth-child(5)::before {
+            background: linear-gradient(90deg, var(--technoda-yellow), var(--technoda-orange));
+        }
+
+        .point-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+        }
+
+        .point-card h3 {
+            font-size: 1.4rem;
+            color: var(--dark-bg);
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        /* Section 3 - Annual Theme */
+        .section-3 {
+            background: linear-gradient(135deg, #E8F5E8 0%, #C8E6C9 50%, #A5D6A7 100%);
+            color: var(--dark-bg);
+        }
+
+        .theme-content {
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .theme-title {
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--technoda-blue);
+            font-family: 'Outfit', 'Varela Round', sans-serif;
+        }
+
+        .theme-subtitle {
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--nashim-purple);
+            font-weight: 500;
+        }
+
+        .health-icons {
+            display: flex;
+            justify-content: center;
+            gap: 120px;
+            margin: 70px 0;
+        }
+
+        .health-icon {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .health-icon:hover {
+            transform: scale(1.15);
+        }
+
+        .icon-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin: 0 auto 25px;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(15px);
+            border: 3px solid rgba(107, 155, 209, 0.3);
+        }
+
+        .health-icon h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--technoda-blue);
+        }
+
+        .building-points {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 35px;
+            margin-top: 60px;
+        }
+
+        .building-card {
+            background: rgba(255,255,255,0.8);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(107, 155, 209, 0.2);
+        }
+
+        .building-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--technoda-blue);
+            margin-bottom: 15px;
+        }
+
+        .building-desc {
+            color: var(--dark-bg);
+            font-size: 1.1rem;
+        }
+
+        /* Section 4 - Product Development */
+        .section-4 {
+            background: linear-gradient(135deg, #F0F4F8 0%, #E2E8F0 100%);
+            color: var(--dark-bg);
+            padding: 60px 20px;
+        }
+
+        .process-container {
+            max-width: 1500px;
+            width: 100%;
+        }
+
+        .process-title {
+            text-align: center;
+            font-size: 4rem;
+            color: var(--technoda-blue);
+            margin-bottom: 60px;
+            font-family: 'Outfit', 'Varela Round', sans-serif;
+            font-weight: 700;
+        }
+
+        .process-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            flex-wrap: wrap;
+            gap: 25px;
+            padding: 0 50px;
+        }
+
+        .start-icon, .end-icon {
+            font-size: 4rem;
+            color: var(--technoda-blue);
+            animation: pulse 2s infinite;
+        }
+
+        .start-icon {
+            margin-left: -30px;
+        }
+
+        .end-icon {
+            margin-right: -30px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .step-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .step-1 .step-icon { background: linear-gradient(135deg, var(--technoda-blue), var(--technoda-turquoise)); }
+        .step-2 .step-icon { background: linear-gradient(135deg, var(--technoda-green), var(--technoda-yellow)); }
+        .step-3 .step-icon { background: linear-gradient(135deg, var(--technoda-orange), var(--technoda-magenta)); }
+        .step-4 .step-icon { background: linear-gradient(135deg, var(--technoda-purple), var(--nashim-purple)); }
+        .step-5 .step-icon { background: linear-gradient(135deg, var(--technoda-turquoise), var(--technoda-green)); }
+        .step-6 .step-icon { background: linear-gradient(135deg, var(--technoda-yellow), var(--technoda-orange)); }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--technoda-blue);
+        }
+
+        .step-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.6s ease;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .step-details.active {
+            max-height: 350px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .step-details p {
+            margin-bottom: 10px;
+        }
+
+        .step-details strong {
+            color: var(--technoda-blue);
+        }
+
+        .process-step:hover .step-icon {
+            transform: scale(1.15);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        /* Connection arrows - reversed direction */
+        .process-step:not(:last-child):not(.start-icon):not(.end-icon)::after {
+            content: '←';
+            position: absolute;
+            top: 45px;
+            left: -15px;
+            font-size: 2rem;
+            color: var(--technoda-blue);
+            z-index: 1;
+        }
+
+        /* Section 5 - Program Flyer */
+        .section-5 {
+            background: linear-gradient(135deg, var(--technoda-turquoise) 0%, var(--technoda-blue) 100%);
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .flyer-container {
+            max-width: 1400px;
+            width: 100%;
+            background: linear-gradient(135deg, #FFF 0%, #F8F9FA 100%);
+            border-radius: 30px;
+            padding: 50px;
+            color: var(--dark-bg);
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 5px solid rgba(255,255,255,0.3);
+            min-height: auto;
+        }
+
+        .flyer-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 15px;
+            background: linear-gradient(90deg, 
+                var(--technoda-blue), 
+                var(--technoda-turquoise), 
+                var(--technoda-green), 
+                var(--technoda-yellow), 
+                var(--technoda-orange),
+                var(--technoda-magenta),
+                var(--nashim-purple));
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .flyer-logos {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .flyer-logos .logo {
+            max-height: 70px;
+            filter: none;
+        }
+
+        .flyer-main-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--technoda-blue), var(--nashim-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 40px;
+            line-height: 1.3;
+            font-family: 'Outfit', 'Varela Round', sans-serif;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .event-item {
+            background: linear-gradient(135deg, #F8F9FA, #E9ECEF);
+            border-radius: 20px;
+            padding: 30px 25px;
+            border-top: 8px solid var(--technoda-orange);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .event-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .event-item:nth-child(1) {
+            border-top-color: var(--technoda-turquoise);
+        }
+
+        .event-item:nth-child(2) {
+            border-top-color: var(--technoda-green);
+        }
+
+        .event-item:nth-child(3) {
+            border-top-color: var(--technoda-orange);
+        }
+
+        .event-date {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--nashim-purple);
+            margin-bottom: 15px;
+        }
+
+        .event-desc {
+            font-size: 1.1rem;
+            color: var(--dark-bg);
+            line-height: 1.4;
+        }
+
+        /* Section 6 - Schedule */
+        .section-6 {
+            background: linear-gradient(135deg, #E8F4F8 0%, #D1E9F0 100%);
+            color: var(--dark-bg);
+            padding: 40px 20px;
+        }
+
+        .schedule-container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .meetings-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .meetings-title {
+            font-size: 1.6rem;
+            color: var(--technoda-blue);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .day-schedule {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .day-schedule::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--technoda-blue), var(--technoda-turquoise));
+        }
+
+        .day-schedule:nth-child(2)::before {
+            background: linear-gradient(90deg, var(--technoda-green), var(--technoda-yellow));
+        }
+
+        .day-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--technoda-blue);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .day-subtitle {
+            text-align: center;
+            color: var(--nashim-purple);
+            font-size: 1rem;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border-right: 3px solid transparent;
+            font-size: 0.9rem;
+        }
+
+        .schedule-item:hover {
+            background: rgba(74, 144, 226, 0.1);
+            transform: translateX(8px);
+            border-right-color: var(--technoda-turquoise);
+        }
+
+        .schedule-time {
+            font-weight: 600;
+            color: var(--nashim-purple);
+            min-width: 90px;
+            margin-left: 15px;
+            font-size: 0.9rem;
+        }
+
+        .schedule-desc {
+            color: var(--dark-bg);
+            line-height: 1.4;
+            font-size: 0.9rem;
+        }
+
+        .workshop-highlight {
+            background: linear-gradient(135deg, var(--technoda-yellow), var(--technoda-orange));
+            color: var(--dark-bg);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 8px 0;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            line-height: 1.3;
+            font-size: 0.85rem;
+        }
+
+        /* Section 7 - Zoom Meetings */
+        .section-7 {
+            background: linear-gradient(135deg, var(--nashim-purple) 0%, var(--astra-purple) 100%);
+            color: white;
+            padding: 60px 20px;
+        }
+
+        .zoom-container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .zoom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .zoom-meeting {
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .zoom-meeting:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .zoom-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--technoda-yellow);
+            margin-bottom: 25px;
+            text-align: center;
+            font-family: 'Outfit', 'Varela Round', sans-serif;
+        }
+
+        .zoom-date {
+            font-size: 1.4rem;
+            color: var(--technoda-turquoise);
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .zoom-content {
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .zoom-content h4 {
+            color: var(--technoda-yellow);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        .zoom-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .zoom-content li {
+            padding: 12px 0;
+            position: relative;
+            padding-right: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .zoom-content li:last-child {
+            border-bottom: none;
+        }
+
+        .zoom-content li::before {
+            content: '→';
+            position: absolute;
+            right: 0;
+            color: var(--technoda-yellow);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Section 8 - Thank You */
+        .section-8 {
+            background: linear-gradient(135deg, #4A90E2 0%, #50C9C3 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .thank-you-content {
+            animation: fadeInUp 2s ease;
+            max-width: 800px;
+        }
+
+        .thank-you-title {
+            font-size: 5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #FFD700, #FFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 40px;
+            font-family: 'Outfit', 'Varela Round', sans-serif;
+        }
+
+        .thank-you-subtitle {
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-bottom: 60px;
+            font-weight: 500;
+        }
+
+        .competition-info {
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 50px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .competition-info h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #FFD700;
+        }
+
+        .competition-info p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .logos-container { padding: 0 50px; }
+            .health-icons { gap: 60px; }
+            .process-flow { flex-direction: column; padding: 0 20px; }
+            .process-step:not(:last-child)::after { display: none; }
+            .events-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .main-title { font-size: 3rem; }
+            .section-title { font-size: 2.5rem; }
+            .theme-title { font-size: 3rem; }
+            .thank-you-title { font-size: 3rem; }
+            .logos-container { gap: 20px; padding: 0 20px; }
+            .logo { max-height: 70px; }
+            .schedule-grid { grid-template-columns: 1fr; }
+            .zoom-grid { grid-template-columns: 1fr; }
+            .health-icons { flex-direction: column; gap: 30px; }
+            .nav-dots { display: none; }
+            .points-grid {flex-direction: column; }
+            .building-points { grid-template-columns: 1fr; }
+        }
+.logo {
+    background: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transform: translateY(-15px); /* זה יעלה אותו למעלה */
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <div class="nav-dot active" data-section="0"></div>
+        <div class="nav-dot" data-section="1"></div>
+        <div class="nav-dot" data-section="2"></div>
+        <div class="nav-dot" data-section="3"></div>
+        <div class="nav-dot" data-section="4"></div>
+        <div class="nav-dot" data-section="5"></div>
+        <div class="nav-dot" data-section="6"></div>
+        <div class="nav-dot" data-section="7"></div>
+    </div>
+
+    <!-- Section 1: Hero -->
+    <section class="section section-1">
+        <!-- Background elements -->
+        <div class="bg-element molecule" style="top: 15%; right: 15%; animation-delay: 0s;"></div>
+        <div class="bg-element dna-strand" style="top: 70%; left: 10%; animation-delay: 1s;"></div>
+        <div class="bg-element circuit" style="top: 30%; left: 80%; animation-delay: 2s;"></div>
+
+        <div class="hero-content">
+            <div class="logos-container">
+                <img src="https://i.ibb.co/jZRbdnpC/nashim.png" alt="נשים מובילות מדע" class="logo">
+                <img src="https://i.ibb.co/0jVVWYTh/astra.png" alt="AstraZeneca" class="logo">
+                <img src="https://i.ibb.co/7JLyMMsq/technoda.png" alt="טכנודע" class="logo technoda-logo">
+            </div>
+            <h1 class="main-title">חשיפת התוכנית</h1>
+            <p class="subtitle">תוכנית יזמות מדעית לנערות - הצעד הראשון שלך לעולם היזמות!</p>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="arrow-down"></div>
+            <div class="arrow-down"></div>
+            <div class="arrow-down"></div>
+        </div>
+    </section>
+
+    <!-- Section 2: Vision and Goals -->
+    <section class="section section-2">
+        <div class="bg-element molecule" style="top: 20%; left: 10%; animation-delay: 0.5s;"></div>
+        <div class="bg-element dna-strand" style="top: 60%; right: 15%; animation-delay: 1.5s;"></div>
+        
+        <div class="vision-content">
+            <h2 class="section-title">חזון ומטרות</h2>
+            <p class="vision-subtitle">תוכנית יזמות טכנולוגית לקידום תחומי המדעים, STEM ורפואה בקרב בנות נוער</p>
+            
+            <div class="points-grid">
+                <div class="point-card">
+                    <h3>להעצים ולעורר השראה בקרב תלמידות</h3>
+                </div>
+                <div class="point-card">
+                    <h3>התנסות ולמידה פרואקטיבית</h3>
+                </div>
+                <div class="point-card">
+                    <h3>מפגש עם "העולם האמיתי"</h3>
+                </div>
+                <div class="point-card">
+                    <h3>היכרות בלתי אמצעית עם role models</h3>
+                </div>
+                <div class="point-card">
+                    <h3>חשיפה חוויתית שמטרתה לייצר עניין לבחירת מגמות במדעים, טכנולוגיה, רפואה הנדסה ומתמטיקה (STEM)</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Annual Theme -->
+    <section class="section section-3">
+        <div class="bg-element circuit" style="top: 15%; right: 20%; animation-delay: 1s;"></div>
+        <div class="bg-element molecule" style="top: 75%; left: 20%; animation-delay: 2s;"></div>
+        
+        <div class="theme-content">
+            <h2 class="theme-title">הנושא השנתי: "עד 120"</h2>
+            <p class="theme-subtitle">שמים לב ללב, לריאות ולמוח</p>
+            
+            <div class="health-icons">
+                <div class="health-icon">
+                    <div class="icon-circle">💖</div>
+                    <h3>לב</h3>
+                </div>
+                <div class="health-icon">
+                    <div class="icon-circle">🫁</div>
+                    <h3>ריאות</h3>
+                </div>
+                <div class="health-icon">
+                    <div class="icon-circle">🧠</div>
+                    <h3>מוח</h3>
+                </div>
+            </div>
+
+            <div class="building-points">
+                <div class="building-card">
+                    <h3 class="building-title">נקודת דגש 1</h3>
+                    <p class="building-desc">בבנייה - נשלים בהמשך</p>
+                </div>
+                <div class="building-card">
+                    <h3 class="building-title">נקודת דגש 2</h3>
+                    <p class="building-desc">בבנייה - נשלים בהמשך</p>
+                </div>
+                <div class="building-card">
+                    <h3 class="building-title">נקודת דגש 3</h3>
+                    <p class="building-desc">בבנייה - נשלים בהמשך</p>
+                </div>
+                <div class="building-card">
+                    <h3 class="building-title">נקודת דגש 4</h3>
+                    <p class="building-desc">בבנייה - נשלים בהמשך</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Product Development Process -->
+    <section class="section section-4">
+        <div class="bg-element dna-strand" style="top: 10%; left: 5%; animation-delay: 0.5s;"></div>
+        <div class="bg-element molecule" style="top: 80%; right: 10%; animation-delay: 1.5s;"></div>
+        
+        <div class="process-container">
+            <h2 class="process-title">תהליך פיתוח מוצר</h2>
+            
+            <div class="process-flow">
+                <div class="start-icon">💡</div>
+                
+                <div class="process-step step-1" data-step="1">
+                    <div class="step-icon">❓</div>
+                    <h3 class="step-title">הבעיה</h3>
+                    <div class="step-details">
+                        <p><strong>מהי הבעיה שהמוצר פותר?</strong></p>
+                        <p><strong>מי חווה את הבעיה?</strong></p>
+                        <p><strong>מהם המחסומים בפתרונות קיימים?</strong></p>
+                    </div>
+                </div>
+
+                <div class="process-step step-2" data-step="2">
+                    <div class="step-icon">📊</div>
+                    <h3 class="step-title">ניתוח שוק</h3>
+                    <div class="step-details">
+                        <p><strong>גודל השוק והפוטנציאל</strong></p>
+                        <p><strong>מתחרים ישירים ועקיפים</strong></p>
+                        <p><strong>הזדמנויות בשוק</strong></p>
+                    </div>
+                </div>
+
+                <div class="process-step step-3" data-step="3">
+                    <div class="step-icon">🔬</div>
+                    <h3 class="step-title">מחקר</h3>
+                    <div class="step-details">
+                        <p><strong>למידה על עולם התוכן</strong></p>
+                        <p><strong>התפתחויות טכנולוגיות</strong></p>
+                        <p><strong>ייחודיות הפתרון</strong></p>
+                    </div>
+                </div>
+
+                <div class="process-step step-4" data-step="4">
+                    <div class="step-icon">🎯</div>
+                    <h3 class="step-title">קהל היעד</h3>
+                    <div class="step-details">
+                        <p><strong>זיהוי קהל יעד ראשי</strong></p>
+                        <p><strong>צרכים ואתגרים</strong></p>
+                        <p><strong>תתי קטגוריות</strong></p>
+                    </div>
+                </div>
+
+                <div class="process-step step-5" data-step="5">
+                    <div class="step-icon">⚡</div>
+                    <h3 class="step-title">הפתרון</h3>
+                    <div class="step-details">
+                        <p><strong>ערך מרכזי של הפתרון</strong></p>
+                        <p><strong>תכונות עיקריות</strong></p>
+                        <p><strong>יתרונות תחרותיים</strong></p>
+                    </div>
+                </div>
+
+                <div class="process-step step-6" data-step="6">
+                    <div class="step-icon">💼</div>
+                    <h3 class="step-title">מודל עסקי</h3>
+                    <div class="step-details">
+                        <p><strong>מודל הכנסות</strong></p>
+                        <p><strong>אסטרטגיית רכישת לקוחות</strong></p>
+                        <p><strong>מודל תמחור</strong></p>
+                    </div>
+                </div>
+
+                <div class="end-icon">🚀</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Program Flyer -->
+    <section class="section section-5">
+        <div class="bg-element circuit" style="top: 20%; left: 10%; animation-delay: 1s;"></div>
+        <div class="bg-element molecule" style="top: 70%; right: 5%; animation-delay: 2s;"></div>
+        
+        <div class="flyer-container">
+            <div class="flyer-logos">
+                <img src="https://i.ibb.co/jZRbdnpC/nashim.png" alt="נשים מובילות מדע" class="logo">
+                <img src="https://i.ibb.co/0jVVWYTh/astra.png" alt="AstraZeneca" class="logo">
+                <img src="https://i.ibb.co/7JLyMMsq/technoda.png" alt="טכנודע" class="logo">
+            </div>
+            
+            <h2 class="flyer-main-title">תוכנית יזמות מדעית – הצעד הראשון שלך לעולם היזמות!</h2>
+            
+            <div class="events-grid">
+                <div class="event-item">
+                    <div class="event-date">🚀 אירוע השקה</div>
+                    <div class="event-desc">04.02.2026<br>מפגש חשיפה חגיגי של התוכנית<br>טכנודע - חדרה</div>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-date">💻 שלב ביניים</div>
+                    <div class="event-desc">2 מפגשי זום מרתקים בנושא פיתוח המוצר והכנה ליום השיא</div>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-date">🎊 יום השיא</div>
+                    <div class="event-desc">05.03.2026<br>מפגש עם מנטורים/ות ומומחים/ות מהתעשייה<br>טכנודע - חדרה</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Physical Days Schedule -->
+    <section class="section section-6">
+        <div class="bg-element dna-strand" style="top: 15%; right: 10%; animation-delay: 0.5s;"></div>
+        <div class="bg-element molecule" style="top: 75%; left: 15%; animation-delay: 1.5s;"></div>
+        
+        <div class="schedule-container">
+            <h2 class="section-title">לו"ז המפגשים הפיזיים</h2>
+            
+            <div class="schedule-grid">
+                <!-- Day 1 -->
+                <div class="day-schedule">
+                    <h3 class="day-title">מפגש פיזי ראשון</h3>
+                    <div class="day-subtitle">יום רביעי - 04.02.2026</div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">09:00</div>
+                        <div class="schedule-desc">התכנסות</div>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">09:30-10:00</div>
+                        <div class="schedule-desc">הרצאת פתיחה באודיטוריום - הזנקה מרגשת</div>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">10:00-13:00</div>
+                        <div class="schedule-desc">
+                            <strong>חיים בריאים עד 120 - שלוש סדנאות הפעלה:</strong>
+                            <div class="workshop-highlight">
+                                🫁 לחץ נשימה ובריאות העור
+                            </div>
+                            <div class="workshop-highlight">
+                                💖 קרדיולוגיה, רגשות ומה שביניהם
+                            </div>
+                            <div class="workshop-highlight">
+                                🧠 המוח בלחץ
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">13:00-13:30</div>
+                        <div class="schedule-desc">ארוחת צהרים</div>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">13:30-14:00</div>
+                        <div class="schedule-desc">מעגלי חשיבה</div>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">14:00-14:30</div>
+                        <div class="schedule-desc">סיכום באודיטוריום</div>
+                    </div>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="day-schedule">
+                    <h3 class="day-title">מפגש פיזי שני</h3>
+                    <div class="day-subtitle">יום חמישי - 05.03.2026</div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">09:30-10:00</div>
+                        <div class="schedule-desc">התכנסות ונשנושים</div>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">10:00-10:30</div>
+                        <div class="schedule-desc">פתיחה באודיטוריום</div>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">10:30-11:30</div>
+                        <div class="schedule-desc">סדנה ראשונה</div>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">11:30-12:30</div>
+                        <div class="schedule-desc">סדנה שנייה</div>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">12:30-13:30</div>
+                        <div class="schedule-desc">סדנה שלישית</div>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">13:30-14:30</div>
+                        <div class="schedule-desc">ארוחת צהריים</div>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">14:30-15:30</div>
+                        <div class="schedule-desc">סבב השלמות</div>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">15:30-17:00</div>
+                        <div class="schedule-desc">פאנל מומחים (שיפוט)</div>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">17:00-18:00</div>
+                        <div class="schedule-desc">סיכום והצגת המיזמים</div>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">18:00-18:30</div>
+                        <div class="schedule-desc">פיזור</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Zoom Meetings -->
+    <section class="section section-7">
+        <div class="bg-element circuit" style="top: 25%; right: 15%; animation-delay: 1s;"></div>
+        <div class="bg-element dna-strand" style="top: 65%; left: 10%; animation-delay: 2s;"></div>
+        
+        <div class="zoom-container">
+            <h2 class="section-title">מפגשי זום</h2>
+            
+            <div class="zoom-grid">
+                <!-- Zoom 1 -->
+                <div class="zoom-meeting">
+                    <h3 class="zoom-title">מפגש זום ראשון</h3>
+                    <div class="zoom-date">📅 16.02.2026 (יום שני) | ⏰ 16:30 - 17:30</div>
+                    
+                    <div class="zoom-content">
+                        <h4>תוכן המפגש:</h4>
+                        <ul>
+                            <li>הסבר ראשוני על הפורמט והמבנה</li>
+                            <li>הכרת פלטפורמות בינה מלאכותית עבור שיווק המוצר</li>
+                            <li>כלים דיגיטליים לפיתוח רעיונות</li>
+                            <li>הדרכה טכנית ראשונית</li>
+                            <li>מבוא לחשיבה יזמית</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Zoom 2 -->
+                <div class="zoom-meeting">
+                    <h3 class="zoom-title">מפגש זום שני</h3>
+                    <div class="zoom-date">📅 23.02.2026 (יום שני) | ⏰ 16:30 - 17:30</div>
+                    
+                    <div class="zoom-content">
+                        <h4>תוכן המפגש:</h4>
+                        <ul>
+                            <li>כתיבת תיק מוצר מקיף - תיעוד הפרויקט שפיתחתם</li>
+                            <li>הכנת מצגת ייעודית למוצר</li>
+                            <li>אסטרטגיות הצגה אפקטיביות</li>
+                            <li>דגשים וטיפים לקראת יום השיא</li>
+                            <li>הכנה לפאנל השופטים</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Thank You -->
+    <section class="section section-8">
+        <div class="bg-element molecule" style="top: 20%; right: 20%; animation-delay: 0.5s;"></div>
+        <div class="bg-element dna-strand" style="top: 70%; left: 15%; animation-delay: 1s;"></div>
+        <div class="bg-element circuit" style="top: 40%; right: 10%; animation-delay: 1.5s;"></div>
+        
+        <div class="thank-you-content">
+            <h1 class="thank-you-title">תודה על ההקשבה</h1>
+            <p class="thank-you-subtitle">נתראה בתחרות! 🚀</p>
+            
+            <div class="competition-info">
+                <h3>מוכנות להתחיל את המסע?</h3>
+                <p>תוכנית יזמות מדעית מחכה לכן!</p>
+                <br>
+                <div class="logos-container">
+                    <img src="https://i.ibb.co/jZRbdnpC/nashim.png" alt="נשים מובילות מדע" class="logo" style="max-height: 60px;">
+                    <img src="https://i.ibb.co/0jVVWYTh/astra.png" alt="AstraZeneca" class="logo" style="max-height: 60px;">
+                    <img src="https://i.ibb.co/7JLyMMsq/technoda.png" alt="טכnoda" class="logo" style="max-height: 60px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Enhanced scroll behavior - fixed version
+        let currentSection = 0;
+        const sections = document.querySelectorAll('.section');
+        const navDots = document.querySelectorAll('.nav-dot');
+        const totalSections = sections.length;
+        let isScrolling = false;
+        let scrollDirection = 0;
+
+        // Smooth scroll to section
+        function scrollToSection(index) {
+            if (index >= 0 && index < totalSections && index !== currentSection) {
+                isScrolling = true;
+                sections[index].scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                updateNavDots(index);
+                currentSection = index;
+                
+                // Reset scrolling flag after smooth scroll completes
+                setTimeout(() => {
+                    isScrolling = false;
+                }, 1000);
+            }
+        }
+
+        // Update navigation dots
+        function updateNavDots(activeIndex) {
+            navDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === activeIndex);
+            });
+        }
+
+        // Improved wheel handler
+        let wheelTimeout;
+        let wheelDelta = 0;
+        
+        function handleWheel(e) {
+            if (isScrolling) return;
+            
+            clearTimeout(wheelTimeout);
+            wheelDelta += e.deltaY;
+            
+            wheelTimeout = setTimeout(() => {
+                if (Math.abs(wheelDelta) > 50) {
+                    e.preventDefault();
+                    
+                    if (wheelDelta > 0 && currentSection < totalSections - 1) {
+                        // Scroll down
+                        scrollToSection(currentSection + 1);
+                    } else if (wheelDelta < 0 && currentSection > 0) {
+                        // Scroll up
+                        scrollToSection(currentSection - 1);
+                    }
+                }
+                wheelDelta = 0;
+            }, 100);
+        }
+
+        // Navigation dots click events
+        navDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                if (!isScrolling) {
+                    scrollToSection(index);
+                }
+            });
+        });
+
+        // Wheel event listener
+        window.addEventListener('wheel', handleWheel, { passive: false });
+
+        // Keyboard navigation
+        window.addEventListener('keydown', (e) => {
+            if (isScrolling) return;
+            
+            if (e.key === 'ArrowDown' && currentSection < totalSections - 1) {
+                e.preventDefault();
+                scrollToSection(currentSection + 1);
+            } else if (e.key === 'ArrowUp' && currentSection > 0) {
+                e.preventDefault();
+                scrollToSection(currentSection - 1);
+            }
+        });
+
+        // Interactive product development process
+        const processSteps = document.querySelectorAll('.process-step');
+        
+        processSteps.forEach(step => {
+            step.addEventListener('mouseenter', () => {
+                // Close all other details
+                processSteps.forEach(otherStep => {
+                    if (otherStep !== step) {
+                        const details = otherStep.querySelector('.step-details');
+                        if (details) details.classList.remove('active');
+                    }
+                });
+                
+                // Open current step details
+                const details = step.querySelector('.step-details');
+                if (details) details.classList.add('active');
+            });
+            
+            step.addEventListener('mouseleave', () => {
+                setTimeout(() => {
+                    if (!step.matches(':hover')) {
+                        const details = step.querySelector('.step-details');
+                        if (details) details.classList.remove('active');
+                    }
+                }, 300);
+            });
+        });
+
+        // Enhanced animations for elements entering viewport
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.point-card, .building-card, .event-item, .schedule-item, .zoom-meeting');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight * 0.8) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Initialize elements for animation
+        const initAnimations = () => {
+            const elements = document.querySelectorAll('.point-card, .building-card, .event-item, .schedule-item, .zoom-meeting');
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'all 0.6s ease';
+            });
+        };
+
+        // Intersection Observer for section tracking
+        const observerOptions = {
+            threshold: 0.7,
+            rootMargin: '0px 0px -10% 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            if (isScrolling) return;
+            
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionIndex = Array.from(sections).indexOf(entry.target);
+                    if (sectionIndex !== currentSection && sectionIndex >= 0) {
+                        currentSection = sectionIndex;
+                        updateNavDots(sectionIndex);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Touch support for mobile
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        window.addEventListener('touchstart', (e) => {
+            touchStartY = e.changedTouches[0].screenY;
+        });
+
+        window.addEventListener('touchend', (e) => {
+            if (isScrolling) return;
+            
+            touchEndY = e.changedTouches[0].screenY;
+            const swipeThreshold = 80;
+            const diff = touchStartY - touchEndY;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0 && currentSection < totalSections - 1) {
+                    scrollToSection(currentSection + 1);
+                } else if (diff < 0 && currentSection > 0) {
+                    scrollToSection(currentSection - 1);
+                }
+            }
+        });
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            initAnimations();
+            animateOnScroll();
+            // Set initial section
+            updateNavDots(0);
+        });
+
+        // Update on scroll (for animations)
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>
