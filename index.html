@@ -178,7 +178,7 @@
         }
 
         .main-title {
-            font-size: 6rem;
+            font-size: 4rem;
             font-weight: 700;
             background: linear-gradient(45deg, #00ff88, #00cc6a);
             -webkit-background-clip: text;
@@ -1022,14 +1022,14 @@
             border-bottom: none;
         }
 
-        .zoom-content li::before {
-            content: '→';
-            position: absolute;
-            right: 0;
-            color: var(--technoda-yellow);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
+.zoom-content li::before {
+    content: '•';
+    position: absolute;
+    right: 0;
+    color: var(--technoda-yellow);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
 
         /* Section 8 - Thank You */
 .section-8 {
@@ -1238,8 +1238,9 @@
                 <img src="https://i.ibb.co/0jVVWYTh/astra.png" alt="AstraZeneca" class="logo">
                 <img src="https://i.ibb.co/7JLyMMsq/technoda.png" alt="טכנודע" class="logo technoda-logo">
             </div>
-            <h1 class="main-title">חשיפת התוכנית</h1>
-            <p class="subtitle">תוכנית יזמות מדעית לנערות - הצעד הראשון שלך לעולם היזמות!</p>
+
+            <p class="main-title">תוכנית יזמות מדעית לנערות</p>
+            <p class="subtitle">הצעד הראשון שלך לעולם היזמות!</p>
         </div>
 
         <div class="scroll-indicator">
@@ -1412,21 +1413,21 @@
                     <div class="timeline-icon">🚀</div>
                     <div class="timeline-title">אירוע השקה</div>
                     <div class="timeline-date">04.02.2026</div>
-                    <div class="timeline-desc">מפגש חשיפה חגיגי של התוכנית<br>טכנודע - המרכז הישראלי לרפואה ומדע - חדרה</div>
+                    <div class="timeline-desc">מפגש חשיפה חגיגי של התוכנית<br>בטכנודע - המרכז הישראלי לרפואה ומדע - חדרה</div>
                 </div>
                 
                 <div class="timeline-item">
                     <div class="timeline-icon">💻</div>
                     <div class="timeline-title">שלב ביניים</div>
                     <div class="timeline-date">פברואר 2026</div>
-                    <div class="timeline-desc">2 מפגשי זום מרתקים בנושא פיתוח המוצר והכנה ליום השיא</div>
+                    <div class="timeline-desc">2 מפגשי זום מרתקים בנושא פיתוח מוצר והכנה ליום השיא</div>
                 </div>
                 
                 <div class="timeline-item">
                     <div class="timeline-icon">🎊</div>
                     <div class="timeline-title">יום השיא</div>
                     <div class="timeline-date">05.03.2026</div>
-                    <div class="timeline-desc">מפגש עם מנטורים/ות ומומחים/ות מהתעשייה<br>טכנודע - חדרה</div>
+                    <div class="timeline-desc">מפגש עם מנטורים/ות ומומחים/ות מהתעשייה<br>בטכנודע - המרכז הישראלי לרפואה ומדע - חדרה</div>
                 </div>
             </div>
         </div>
@@ -1443,7 +1444,7 @@
             <div class="schedule-grid">
                 <!-- Day 1 -->
                 <div class="day-schedule">
-                    <h3 class="day-title">מפגש פיזי ראשון</h3>
+                    <h3 class="day-title">מפגש השקה ראשון</h3>
                     <div class="day-subtitle">יום רביעי - 04.02.2026</div>
                     
                     <div class="schedule-item">
@@ -1459,9 +1460,9 @@
                     <div class="schedule-item">
                         <div class="schedule-time">10:00-13:00</div>
                         <div class="schedule-desc">
-                            <strong>חיים בריאים עד 120 - שלוש סדנאות הפעלה:</strong>
+                            <strong>חיים בריאים עד 120 - שלוש סדנאות חוויתיות:</strong>
                             <div class="workshop-highlight">
-                                🫁 לחץ נשימה ובריאות העור
+                                🫁 נשימה ובריאות העור
                             </div>
                             <div class="workshop-highlight">
                                 💖 קרדיולוגיה, רגשות ומה שביניהם
@@ -1490,7 +1491,7 @@
 
                 <!-- Day 2 -->
                 <div class="day-schedule">
-                    <h3 class="day-title">מפגש פיזי שני</h3>
+                    <h3 class="day-title">מפגש שיא שני</h3>
                     <div class="day-subtitle">יום חמישי - 05.03.2026</div>
                     
                     <div class="schedule-item">
@@ -1581,11 +1582,12 @@
                     <div class="zoom-content">
                         <h4>תוכן המפגש:</h4>
                         <ul>
-                            <li>כתיבת תיק מוצר מקיף - תיעוד הפרויקט שפיתחתם</li>
+                            <li>כתיבת ספר מותג מקיף - תיעוד הפרויקט שפיתחתם</li>
                             <li>הכנת מצגת ייעודית למוצר</li>
                             <li>אסטרטגיות הצגה אפקטיביות</li>
-                            <li>דגשים וטיפים לקראת יום השיא</li>
                             <li>הכנה לפאנל השופטים</li>
+                            <li>דגשים וטיפים לקראת יום השיא</li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -1760,19 +1762,21 @@
         });
 
         // Enhanced animations for elements entering viewport
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.point-card, .timeline-item, .schedule-item, .zoom-meeting');
-            
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight * 0.8) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        };
+// Enhanced animations for elements entering viewport
+const animateOnScroll = () => {
+    const elements = document.querySelectorAll('.point-card, .timeline-item, .schedule-item, .zoom-meeting');
+    
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        // שנה את הערך מ-0.8 ל-0.95 כדי שזה יפעל מהר יותר
+        if (elementTop < windowHeight * 0.95) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        }
+    });
+};
 
         // Initialize elements for animation
         const initAnimations = () => {
