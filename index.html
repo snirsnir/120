@@ -365,7 +365,7 @@
         }
 
         .theme-title {
-            font-size: 5rem;
+            font-size: 4rem;
             font-weight: 700;
             margin-bottom: 30px;
             color: var(--technoda-yellow);
@@ -1030,16 +1030,169 @@
     font-weight: bold;
     font-size: 1.5rem;
 }
-
-        /* Section 8 - Thank You */
+/* Section 8 - Budget */
 .section-8 {
+    background: linear-gradient(135deg, #1a2e42 0%, #2d4a66 30%, #40668a 60%, #5382ae 100%);
+    color: white;
+    padding: 40px 20px;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.budget-container {
+    max-width: 1000px;
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+    border-radius: 25px;
+    padding: 30px;
+    color: var(--dark-bg);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+    position: relative;
+    z-index: 10;
+}
+
+.budget-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.budget-logos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.budget-logos .logo {
+    max-height: 40px;
+}
+
+.budget-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--technoda-blue);
+    margin-bottom: 20px;
+    font-family: 'Outfit', 'Varela Round', sans-serif;
+}
+
+.budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.budget-table th,
+.budget-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(107, 155, 209, 0.2);
+}
+
+.budget-header-row th {
+    background: linear-gradient(135deg, var(--technoda-blue), var(--technoda-turquoise));
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.category-cell {
+    background: rgba(125, 221, 198, 0.15);
+    font-weight: 600;
+    color: var(--technoda-blue);
+}
+
+.total-row {
+    background: linear-gradient(135deg, var(--technoda-yellow), var(--technoda-orange));
+    color: var(--dark-bg);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.budget-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(107, 155, 209, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    border-right: 5px solid var(--technoda-blue);
+}
+
+.summary-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.summary-label {
+    font-weight: 600;
+    color: var(--technoda-blue);
+}
+
+.summary-value {
+    font-weight: 700;
+    color: var(--technoda-turquoise);
+    font-size: 1.2rem;
+}
+
+.summary-note {
+    font-size: 0.9rem;
+    color: var(--dark-bg);
+    font-style: italic;
+}
+
+/* Section 9 - Thank You */
+.section-9 {
     background: linear-gradient(135deg, #0a0f14 0%, #0f1419 30%, #1a2332 60%, #243447 100%);
     color: white;
     text-align: center;
     position: relative;
 }
 
-        .section-8::before {
+.section-9::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 40% 30%, rgba(159, 232, 109, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 60% 70%, rgba(247, 185, 85, 0.3) 0%, transparent 50%);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .budget-container { 
+        width: 95%; 
+        padding: 20px; 
+    }
+    .budget-table { 
+        font-size: 0.7rem; 
+    }
+    .budget-table th,
+    .budget-table td { 
+        padding: 8px 4px; 
+    }
+    .budget-title { 
+        font-size: 2rem; 
+    }
+}
+        /* Section 8 - Thank You */
+.section-9 {
+    background: linear-gradient(135deg, #0a0f14 0%, #0f1419 30%, #1a2332 60%, #243447 100%);
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+        .section-9::before {
             content: '';
             position: absolute;
             top: 0;
@@ -1120,6 +1273,104 @@
             .points-grid { flex-direction: column; }
             .modal-content { width: 95%; padding: 20px; }
         }
+.sticky-logos {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 0 30px;
+    pointer-events: none; /* כדי שלא יפריע לאינטראקציות */
+}
+
+.logos-left, .logos-right {
+    display: flex;
+    gap: 15px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    padding: 10px 15px;
+    border-radius: 15px;
+    pointer-events: auto; /* רק הלוגויים יהיו קליקים */
+}
+
+.sticky-logo {
+    max-height: 80px;
+    filter: brightness(1.2);
+}
+
+.technoda-sticky {
+    background: white;
+    padding: 5px 8px;
+    border-radius: 8px;
+    max-height: 80px;
+}
+.phase-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding: 0 50px;
+}
+
+.phase-labels {
+    position: relative;
+    height: 10px;
+}
+
+.phase-text {
+    position: absolute;
+    color: var(--technoda-yellow);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.phase-text:nth-child(1) {
+    left: 13%; /* שנה את האחוז */
+}
+
+.phase-text:nth-child(2) {
+    left: 55%;
+}
+
+.phase-text:nth-child(3) {
+    left: 87%;
+}
+
+.phase-brackets {
+    position: relative;
+    margin-top: 10px;
+}
+
+.bracket {
+    position: absolute;
+    height: 30px;
+    border: 3px solid var(--technoda-turquoise);
+    border-top: none;
+    border-radius: 0 0 15px 15px;
+}
+
+.bracket-1 {
+    width: 220px;
+    left: 90%;
+    transform: translateX(-50%);
+}
+
+.bracket-2 {
+ width: 550px;
+    left: 57%;
+    transform: translateX(-50%);
+}
+
+.bracket-3 {
+    width: 450px;
+    left: 17%;
+    transform: translateX(-50%);
+}
+
+
     </style>
 </head>
 <body>
@@ -1133,8 +1384,17 @@
         <div class="nav-dot" data-section="5"></div>
         <div class="nav-dot" data-section="6"></div>
         <div class="nav-dot" data-section="7"></div>
+        <div class="nav-dot" data-section="8"></div>
     </div>
-
+<div class="sticky-logos">
+    <div class="logos-left">
+        <img src="https://i.ibb.co/0jVVWYTh/astra.png" alt="AstraZeneca" class="sticky-logo">
+        <img src="https://i.ibb.co/jZRbdnpC/nashim.png" alt="נשים מובילות מדע" class="sticky-logo">
+    </div>
+    <div class="logos-right">
+        <img src="https://i.ibb.co/7JLyMMsq/technoda.png" alt="טכנודע" class="sticky-logo technoda-sticky">
+    </div>
+</div>
     <!-- Modals -->
     <div id="heartModal" class="modal">
         <div class="modal-content">
@@ -1257,28 +1517,25 @@
         
         <div class="vision-content">
             <div class="section-header">
-                <h2 class="vision-title">חזון</h2>
-                <p class="vision-text">אנחנו מאמינים שכל נערה יכולה לפרוץ גבולות ולהוביל בעולם המדע והטכנולוגיה. לשם כך הקמנו תוכנית יזמות טכנולוגית לקידום תחומי STEM, שמצמיחה דור חדש של מנהיגות צעירות.</p>
-            </div>
+                <h2 class="vision-title">מטרת העל</h2>
+<p class="vision-text">עידוד תלמידות להשתלב במגוון רחב של מקצועות מדעיים הן במגמות מדעיות בתיכון, לימודי תואר ראשון/שני במדעים במוסדות להשכלה גבוהה</p>            </div>
 
-            <h2 class="goals-title">מטרות</h2>
+            <h2 class="goals-title">מטרות משנה</h2>
             
             <div class="points-grid">
                 <div class="point-card">
-                    <h3>להעצים ולעורר השראה בקרב תלמידות</h3>
+                    <h3>להעצים ולעורר השראה בקרב תלמידות חטיבות הביניים</h3>
                 </div>
                 <div class="point-card">
-                    <h3>לאפשר התנסות פעילה ופרואקטיבית</h3>
+                    <h3>לאפשר התנסות פעילה, חוויתית ופרואקטיבית במעבדות מדעיות מתקדמות</h3>
                 </div>
                 <div class="point-card">
-                    <h3>ליצור חיבור ישיר ל"עולם האמיתי"</h3>
+                    <h3>ליצור חיבור ישיר ל"עולם האמיתי" באמצעות המנטורים של אסטרהזניקה</h3>
                 </div>
                 <div class="point-card">
-                    <h3>להכיר מודלים לחיקוי מתחומי המדע והטכנולוגיה</h3>
+                    <h3>להכיר מודלים נשיים לחיקוי מתחומי המדע והרפואה</h3>
                 </div>
-                <div class="point-card">
-                    <h3>לחשוף את המשתתפות לעולמות STEM ולעודד בחירה במגמות מדעיות והנדסיות</h3>
-                </div>
+
             </div>
         </div>
     </section>
@@ -1289,8 +1546,8 @@
         <div class="bg-element molecule" style="top: 75%; left: 20%; animation-delay: 2s;"></div>
         
         <div class="theme-content">
-            <h2 class="theme-title">הנושא השנתי: "עד 120"</h2>
-            <p class="theme-subtitle">שמים לב ללב, לריאות ולמוח</p>
+            <h2 class="theme-title">הנושא השנתי: "Forever Young"</h2>
+            <p class="theme-subtitle">(❤️ + 🫁 + 🧠)✅  = צעירים לנצח</p>
             
             <div class="health-icons">
                 <div class="health-icon" onclick="openModal('heartModal')">
@@ -1388,6 +1645,17 @@
                     <div class="icon-label">מוצר</div>
                 </div>
             </div>
+<div class="phase-labels">
+    <div class="phase-text">מפגש חשיפה</div>
+    <div class="phase-text">זומים</div>
+    <div class="phase-text">יום השיא</div>
+</div>
+
+<div class="phase-brackets">
+    <div class="bracket bracket-1"></div>
+    <div class="bracket bracket-2"></div>
+    <div class="bracket bracket-3"></div>
+</div>
         </div>
     </section>
 
@@ -1404,8 +1672,8 @@
                     <img src="https://i.ibb.co/7JLyMMsq/technoda.png" alt="טכנודע" class="logo">
                 </div>
                 
-                <h2 class="invitation-title">תוכנית יזמות מדעית</h2>
-                <p class="invitation-subtitle">הצעד הראשון שלך לעולם היזמות!</p>
+                <h2 class="invitation-title">מבנה התכנית</h2>
+            
             </div>
             
             <div class="program-timeline">
@@ -1427,8 +1695,7 @@
                     <div class="timeline-icon">🎊</div>
                     <div class="timeline-title">יום השיא</div>
                     <div class="timeline-date">05.03.2026</div>
-                    <div class="timeline-desc">מפגש עם מנטורים/ות ומומחים/ות מהתעשייה<br>בטכנודע - המרכז הישראלי לרפואה ומדע - חדרה</div>
-                </div>
+<div class="timeline-desc">תחרות בין קבוצות הנערות בליווי מנטורים ומומחים מהתעשייה בטכנודע - המרכז הישראלי לרפואה ומדע - חדרה</div>                </div>
             </div>
         </div>
     </section>
@@ -1462,13 +1729,13 @@
                         <div class="schedule-desc">
                             <strong>חיים בריאים עד 120 - שלוש סדנאות חוויתיות:</strong>
                             <div class="workshop-highlight">
-                                🫁 נשימה ובריאות העור
+    🔧 אב-טיפוס: חדשנות ויצירתיות
                             </div>
                             <div class="workshop-highlight">
-                                💖 קרדיולוגיה, רגשות ומה שביניהם
+    📖 ספר מותג
                             </div>
                             <div class="workshop-highlight">
-                                🧠 המוח בלחץ
+    📢 שיווק ופרסום ההמצאה
                             </div>
                         </div>
                     </div>
@@ -1594,9 +1861,110 @@
             </div>
         </div>
     </section>
-
-    <!-- Section 8: Thank You -->
-    <section class="section section-8">
+<!-- Section 8: Budget -->
+<section class="section section-8">
+    <div class="bg-element dna-strand" style="top: 15%; right: 10%; animation-delay: 0.5s;"></div>
+    <div class="bg-element molecule" style="top: 75%; left: 15%; animation-delay: 1.5s;"></div>
+    
+    <div class="budget-container">
+        <div class="budget-header">
+            <div class="budget-logos">
+                <img src="https://i.ibb.co/jZRbdnpC/nashim.png" alt="נשים מובילות מדע" class="logo">
+                <img src="https://i.ibb.co/0jVVWYTh/astra.png" alt="AstraZeneca" class="logo">
+                <img src="https://i.ibb.co/7JLyMMsq/technoda.png" alt="טכנודע" class="logo">
+            </div>
+            <h2 class="budget-title">תקציב התכנית</h2>
+        </div>
+        
+        <div class="budget-table-wrapper">
+            <table class="budget-table">
+                <thead>
+                    <tr class="budget-header-row">
+                        <th>קטגוריה</th>
+                        <th>פירוט</th>
+                        <th>מס' שעות</th>
+                        <th>עלות מדריך</th>
+                        <th>מס' סדנאות/מדריכים</th>
+                        <th>סכום (ש"ח)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="budget-category-row">
+                        <td rowspan="4" class="category-cell">כוח אדם</td>
+                        <td>הדרכה והשתלמויות</td>
+                        <td>18</td>
+                        <td>200</td>
+                        <td>14</td>
+                        <td>50,400</td>
+                    </tr>
+                    <tr>
+                        <td>התאמת פלטפורמות וסדנאות וגיוס תלמידות</td>
+                        <td>28</td>
+                        <td>150</td>
+                        <td>3</td>
+                        <td>12,600</td>
+                    </tr>
+                    <tr>
+                        <td>ניהול האירוע</td>
+                        <td>18</td>
+                        <td>220</td>
+                        <td>1</td>
+                        <td>3,960</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td colspan="4"><strong>סה"כ כוח אדם</strong></td>
+                        <td><strong>66,960</strong></td>
+                    </tr>
+                    
+                    <tr class="budget-category-row">
+                        <td rowspan="2" class="category-cell">חומרים וציוד</td>
+                        <td>מספר תלמידים: 120</td>
+                        <td>6</td>
+                        <td>55</td>
+                        <td>6</td>
+                        <td>39,600</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td colspan="4"><strong>סה"כ</strong></td>
+                        <td><strong>39,600</strong></td>
+                    </tr>
+                    
+                    <tr class="budget-category-row">
+                        <td rowspan="2" class="category-cell">שונות</td>
+                        <td>לבורנטים, טכנאים, אחזקה ותפעול, שמירה, מזכירות</td>
+                        <td>24</td>
+                        <td>220</td>
+                        <td>14</td>
+                        <td>73,920</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td colspan="4"><strong>סה"כ</strong></td>
+                        <td><strong>73,920</strong></td>
+                    </tr>
+                    
+                    <tr class="total-row">
+                        <td colspan="5"><strong>סה"כ תקציב לא כולל ארוחות וסדנת שיווק</strong></td>
+                        <td><strong>180,480</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="budget-note">
+                <p><strong>הערות:</strong></p>
+                <p>• סה"כ שעות ליום: 7 (היום הראשון: 9:00-15:00 סה"כ 6 שעות + שעת הכנה)</p>
+                <p>• יום השני: 11 (9:00-19:00היום השני: 9:00-19:00 סה"כ 10 שעות + שעת הכנה)</p>
+                <p>• סה"כ ב2 הימים: 18 שעות</p>
+                <p>• התלמידות עוברות שלוש סדנאות בכל יום פעילות. קרי: 6 סדנאות בסה"כ</p>
+                <p>• שלושה זומים שלא נכללו בתקציב</p>
+                <p>• השתלמויות לצוות ההדרכה לשלל הסדנאות</p>
+                <p>• לאחר דיון בנושא התקציב עם טל בתאריך 14/9 ובהמשך לבקשתה, הסכום הסופי עודכן ל: 150,000 ₪.</p>
+                <p>• סכום זה לא כולל כיבוד ותהליכי הערכה.</p>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Section 9: Thank You -->
+    <section class="section section-9">
         <div class="bg-element molecule" style="top: 20%; right: 20%; animation-delay: 0.5s;"></div>
         <div class="bg-element dna-strand" style="top: 70%; left: 15%; animation-delay: 1s;"></div>
         <div class="bg-element circuit" style="top: 40%; right: 10%; animation-delay: 1.5s;"></div>
@@ -1642,6 +2010,7 @@
                     isScrolling = false;
                 }, 1000);
             }
+            updateStickyLogos();
         }
 
         // Update navigation dots
@@ -1806,6 +2175,7 @@ const animateOnScroll = () => {
                     }
                 }
             });
+             updateStickyLogos();
         }, observerOptions);
 
         // Observe all sections
@@ -1846,6 +2216,16 @@ const animateOnScroll = () => {
 
         // Update on scroll (for animations)
         window.addEventListener('scroll', animateOnScroll);
+        function updateStickyLogos() {
+    const stickyLogos = document.querySelector('.sticky-logos');
+    
+    // הצג רק אם לא בסקשיין הראשון
+    if (currentSection > 0) {
+        stickyLogos.style.opacity = '1';
+    } else {
+        stickyLogos.style.opacity = '0';
+    }
+}
     </script>
 </body>
 </html>
