@@ -1146,7 +1146,102 @@
     color: var(--dark-bg);
     font-style: italic;
 }
+.budget-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 25px;
+}
 
+.budget-section {
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    padding: 20px;
+    border-top: 4px solid var(--technoda-turquoise);
+}
+
+.section-title {
+    color: var(--technoda-blue);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.compact-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.compact-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(107, 155, 209, 0.2);
+    text-align: right;
+    font-size: 0.9rem;
+}
+
+.compact-table td:first-child {
+    text-align: right;
+    font-weight: 500;
+}
+
+.compact-table td:last-child {
+    font-weight: 600;
+    color: var(--technoda-turquoise);
+    text-align: center;
+}
+
+.subtotal-row td {
+    background: rgba(125, 221, 198, 0.15);
+    border-bottom: none;
+}
+
+.total-summary {
+    background: linear-gradient(135deg, var(--technoda-yellow), var(--technoda-orange));
+    padding: 15px;
+    border-radius: 15px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.total-amount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    color: var(--dark-bg);
+}
+
+.approved-amount {
+    color: var(--dark-bg);
+    font-size: 1.1rem;
+}
+
+.budget-note-compact {
+    background: rgba(107, 155, 209, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    border-right: 5px solid var(--technoda-blue);
+    text-align: center;
+}
+
+.budget-note-compact p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* רספונסיבי */
+@media (max-width: 768px) {
+    .budget-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .total-amount {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
 /* Section 9 - Thank You */
 .section-9 {
     background: linear-gradient(135deg, #0a0f14 0%, #0f1419 30%, #1a2332 60%, #243447 100%);
@@ -1368,6 +1463,174 @@
     width: 450px;
     left: 17%;
     transform: translateX(-50%);
+}
+
+.budget-two-columns {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    gap: 25px;
+    height: 70vh;
+}
+
+.budget-left-column {
+    overflow-y: auto;
+    padding-left: 10px;
+}
+
+.budget-right-column {
+    padding-right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.budget-section {
+    margin-bottom: -5px;
+}
+
+.section-title {
+    color: var(--technoda-blue);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+    background: rgba(255,255,255,0.05);
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.detailed-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.90rem;
+    background: rgba(255,255,255,0.02);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.detailed-table th,
+.detailed-table td {
+    padding: 6px 8px;
+    text-align: center;
+    border-bottom: 1px solid rgba(107, 155, 209, 0.2);
+}
+
+.detailed-table th {
+    background: rgba(107, 155, 209, 0.2);
+    font-weight: 600;
+    font-size: 0.7rem;
+}
+
+.subtotal-row td {
+    background: rgba(125, 221, 198, 0.15);
+    font-weight: 600;
+}
+
+.budget-summary-box {
+    background: linear-gradient(135deg, var(--technoda-yellow), var(--technoda-orange));
+    color: var(--dark-bg);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.budget-summary-box h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.summary-line.approved {
+    font-weight: 700;
+    font-size: 1rem;
+    border-top: 2px solid var(--dark-bg);
+    padding-top: 10px;
+}
+
+.amount-highlight {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.budget-notes-detailed {
+    background: rgba(107, 155, 209, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    border-right: 5px solid var(--technoda-blue);
+}
+
+.budget-notes-detailed h4 {
+    color: var(--technoda-blue);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.notes-list {
+    list-style: none;
+    padding: 0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.notes-list li {
+    margin-bottom: 8px;
+    padding-right: 15px;
+    position: relative;
+}
+
+.notes-list li::before {
+    content: '•';
+    position: absolute;
+    right: 0;
+    color: var(--technoda-blue);
+    font-weight: bold;
+}
+
+.work-hours-details {
+    background: rgba(125, 221, 198, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    border-right: 5px solid var(--technoda-turquoise);
+}
+
+.work-hours-details h4 {
+    color: var(--technoda-turquoise);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.day-hours, .total-hours {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+}
+
+.total-hours {
+    border-top: 1px solid rgba(125, 221, 198, 0.3);
+    padding-top: 8px;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .budget-two-columns {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    
+    .budget-left-column {
+        height: auto;
+        overflow-y: visible;
+    }
 }
 
 
@@ -1868,100 +2131,165 @@
     
     <div class="budget-container">
         <div class="budget-header">
-            <div class="budget-logos">
-                <img src="https://i.ibb.co/jZRbdnpC/nashim.png" alt="נשים מובילות מדע" class="logo">
-                <img src="https://i.ibb.co/0jVVWYTh/astra.png" alt="AstraZeneca" class="logo">
-                <img src="https://i.ibb.co/7JLyMMsq/technoda.png" alt="טכנודע" class="logo">
-            </div>
+
             <h2 class="budget-title">תקציב התכנית</h2>
         </div>
         
-        <div class="budget-table-wrapper">
-            <table class="budget-table">
-                <thead>
-                    <tr class="budget-header-row">
-                        <th>קטגוריה</th>
-                        <th>פירוט</th>
-                        <th>מס' שעות</th>
-                        <th>עלות מדריך</th>
-                        <th>מס' סדנאות/מדריכים</th>
-                        <th>סכום (ש"ח)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="budget-category-row">
-                        <td rowspan="4" class="category-cell">כוח אדם</td>
-                        <td>הדרכה והשתלמויות</td>
-                        <td>18</td>
-                        <td>200</td>
-                        <td>14</td>
-                        <td>50,400</td>
-                    </tr>
-                    <tr>
-                        <td>התאמת פלטפורמות וסדנאות וגיוס תלמידות</td>
-                        <td>28</td>
-                        <td>150</td>
-                        <td>3</td>
-                        <td>12,600</td>
-                    </tr>
-                    <tr>
-                        <td>ניהול האירוע</td>
-                        <td>18</td>
-                        <td>220</td>
-                        <td>1</td>
-                        <td>3,960</td>
-                    </tr>
-                    <tr class="subtotal-row">
-                        <td colspan="4"><strong>סה"כ כוח אדם</strong></td>
-                        <td><strong>66,960</strong></td>
-                    </tr>
-                    
-                    <tr class="budget-category-row">
-                        <td rowspan="2" class="category-cell">חומרים וציוד</td>
-                        <td>מספר תלמידים: 120</td>
-                        <td>6</td>
-                        <td>55</td>
-                        <td>6</td>
-                        <td>39,600</td>
-                    </tr>
-                    <tr class="subtotal-row">
-                        <td colspan="4"><strong>סה"כ</strong></td>
-                        <td><strong>39,600</strong></td>
-                    </tr>
-                    
-                    <tr class="budget-category-row">
-                        <td rowspan="2" class="category-cell">שונות</td>
-                        <td>לבורנטים, טכנאים, אחזקה ותפעול, שמירה, מזכירות</td>
-                        <td>24</td>
-                        <td>220</td>
-                        <td>14</td>
-                        <td>73,920</td>
-                    </tr>
-                    <tr class="subtotal-row">
-                        <td colspan="4"><strong>סה"כ</strong></td>
-                        <td><strong>73,920</strong></td>
-                    </tr>
-                    
-                    <tr class="total-row">
-                        <td colspan="5"><strong>סה"כ תקציב לא כולל ארוחות וסדנת שיווק</strong></td>
-                        <td><strong>180,480</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <div class="budget-note">
-                <p><strong>הערות:</strong></p>
-                <p>• סה"כ שעות ליום: 7 (היום הראשון: 9:00-15:00 סה"כ 6 שעות + שעת הכנה)</p>
-                <p>• יום השני: 11 (9:00-19:00היום השני: 9:00-19:00 סה"כ 10 שעות + שעת הכנה)</p>
-                <p>• סה"כ ב2 הימים: 18 שעות</p>
-                <p>• התלמידות עוברות שלוש סדנאות בכל יום פעילות. קרי: 6 סדנאות בסה"כ</p>
-                <p>• שלושה זומים שלא נכללו בתקציב</p>
-                <p>• השתלמויות לצוות ההדרכה לשלל הסדנאות</p>
-                <p>• לאחר דיון בנושא התקציב עם טל בתאריך 14/9 ובהמשך לבקשתה, הסכום הסופי עודכן ל: 150,000 ₪.</p>
-                <p>• סכום זה לא כולל כיבוד ותהליכי הערכה.</p>
+<div class="budget-table-wrapper">
+    <div class="budget-two-columns">
+        <!-- עמודה שמאלית - טבלאות -->
+        <div class="budget-left-column">
+            <!-- כוח אדם -->
+            <div class="budget-section">
+                <h3 class="section-title">כוח אדם</h3>
+                <table class="detailed-table">
+                    <thead>
+                        <tr>
+                            <th>פרטים</th>
+                            <th>מס' סדנאות/מדריכים</th>
+                            <th>עלות מדריך</th>
+                            <th>מס' שעות</th>
+                            <th>סה"כ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>הדרכה והשתלמויות</td>
+                            <td>14</td>
+                            <td>200</td>
+                            <td>18</td>
+                            <td>50,400</td>
+                        </tr>
+                        <tr>
+                            <td>התאמת פלטפורמות וסדנאות,  גיוס תלמידות</td>
+                            <td>3</td>
+                            <td>150</td>
+                            <td>28</td>
+                            <td>12,600</td>
+                        </tr>
+                        <tr>
+                            <td>ניהול האירוע</td>
+                            <td>1</td>
+                            <td>220</td>
+                            <td>18</td>
+                            <td>3,960</td>
+                        </tr>
+                        <tr class="subtotal-row">
+                            <td colspan="4"><strong>סה"כ כוח אדם</strong></td>
+                            <td><strong>66,960</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- חומרים וציוד -->
+            <div class="budget-section">
+                <h3 class="section-title">חומרים וציוד</h3>
+                <table class="detailed-table">
+                    <thead>
+                        <tr>
+                            <th>מספר תלמידים</th>
+                            <th>מספר סדנאות</th>
+                            <th>עלות סדנא</th>
+                            
+                            <th>סה"כ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>120</td>
+                            <td>6</td>
+                            <td>55</td>
+                           
+                            <td>39,600</td>
+                        </tr>
+                        <tr class="subtotal-row">
+                            <td colspan="3"><strong>סה"כ</strong></td>
+                            <td><strong>39,600</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- שונות -->
+            <div class="budget-section">
+                <h3 class="section-title">שונות</h3>
+                <table class="detailed-table">
+                    <thead>
+                        <tr>
+                            <th>פירוט</th>
+                            <th>מס' משתתפים</th>
+                            <th>מס' עובדים</th>
+                            <th>עלות ממוצעת</th>
+                            <th>סה"כ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>לבורנטים, טכנאים, אחזקה ותפעול, שמירה, מזכירות</td>
+                            <td>14</td>
+                            <td>220</td>
+                            <td>24</td>
+                            <td>73,920</td>
+                        </tr>
+                        <tr class="subtotal-row">
+                            <td colspan="4"><strong>סה"כ</strong></td>
+                            <td><strong>73,920</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- עמודה ימנית - תוכן והערות -->
+        <div class="budget-right-column">
+            <!-- סיכום תקציב -->
+            <div class="budget-summary-box">
+                <h3>סיכום תקציב</h3>
+                <div class="summary-line">
+                    <span>סה"כ תקציב לא כולל ארוחות וסדנת שיווק:</span>
+                    <span class="amount-highlight">180,480 ש"ח</span>
+                </div>
+                <div class="summary-line approved">
+                    <span>תקציב מאושר:</span>
+                    <span class="amount-highlight">150,000 ש"ח</span>
+                </div>
+            </div>
+
+            <!-- הערות מפורטות -->
+            <div class="budget-notes-detailed">
+                <h4>הערות:</h4>
+                <ul class="notes-list">
+                    <li>התלמידות עוברות שלוש סדנאות בכל יום פעילות. קרי: 6 סדנאות בסה"כ</li>
+                    <li>שלושה זומים שלא נכללו בתקציב</li>
+                    <li>השתלמויות לצוות ההדרכה לשלל הסדנאות</li>
+                    <li>לאחר דיון בנושא התקציב עם טל בתאריך 14/9 ובהמשך לבקשתה, הסכום הסופי עודכן ל: 150,000 ש"ח</li>
+                    <li>סכום זה לא כולל כיבוד ותהליכי הערכה</li>
+                </ul>
+            </div>
+
+            <!-- פירוט שעות עבודה -->
+            <div class="work-hours-details">
+                <h4>פירוט שעות העבודה:</h4>
+                <div class="hours-breakdown">
+                    <div class="day-hours">
+                        <strong>יום ראשון:</strong>
+                        <span>9:00-15:00 (6 שעות) + שעת הכנה = 7 שעות</span>
+                    </div>
+                    <div class="day-hours">
+                        <strong>יום שני:</strong>
+                        <span>9:00-19:00 (10 שעות) + שעת הכנה = 11 שעות</span>
+                    </div>
+                    <div class="total-hours">
+                        <strong>סה"כ:</strong>
+                        <span>18 שעות</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
 </section>
     <!-- Section 9: Thank You -->
     <section class="section section-9">
