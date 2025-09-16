@@ -1632,7 +1632,27 @@
         overflow-y: visible;
     }
 }
+.excel-download {
+    margin-top: -5px;
+    text-align: center;
+}
 
+.excel-link {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--technoda-green), var(--technoda-blue));
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.excel-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+}
 
     </style>
 </head>
@@ -1747,7 +1767,16 @@
             </div>
         </div>
     </div>
-
+<div id="excelModal" class="modal">
+    <div class="modal-content" style="width: 95%; max-width: 95%; height: 95%; max-height: 95vh; margin: 2% auto;">
+        <span class="close">&times;</span>
+        <div class="modal-header">תקציב מפורט - קובץ Excel</div>
+        <iframe 
+            src="https://docs.google.com/spreadsheets/d/1c9KXjHDzejvR7GqlUp-bQp7UoiiJqoCzzPORQ9eoDFQ/edit?usp=sharing&rm=minimal"
+            style="width: 100%; height: calc(100% - 80px); border: none; border-radius: 10px;">
+        </iframe>
+    </div>
+</div>
     <!-- Section 1: Hero -->
     <section class="section section-1">
         <!-- Background elements -->
@@ -2286,6 +2315,11 @@
                     </div>
                 </div>
             </div>
+            <div class="excel-download">
+    <a href="#" id="openExcelModal" class="excel-link">
+        להצעה בקובץ XLSX
+    </a>
+</div>
         </div>
     </div>
 </div>
@@ -2552,6 +2586,19 @@ const animateOnScroll = () => {
     } else {
         stickyLogos.style.opacity = '0';
     }
+}
+// Excel modal functionality
+document.getElementById('openExcelModal').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('excelModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    modalOpen = true;
+});
+// בתוך window.onclick function, הוסף:
+if (event.target == document.getElementById('excelModal')) {
+    document.getElementById('excelModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+    modalOpen = false;
 }
     </script>
 </body>
