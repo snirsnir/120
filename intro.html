@@ -25,6 +25,7 @@
             --nashim-purple: #D657A3;
             --dark-bg: #2C3E50;
             --light-bg: #F8F9FA;
+            --gold-border: #FFD700;
         }
 
         body {
@@ -156,12 +157,25 @@
             line-height: 1.2;
         }
 
-        .subtitle {
-            font-size: 2.2rem;
-            margin-bottom: 80px;
-            color: #ffffff;
-            font-weight: 500;
-            line-height: 1.4;
+        .technoda-logo-hero {
+            margin: 40px 0;
+            text-align: center;
+            animation: fadeInUp 2s ease 0.5s both;
+        }
+
+        .hero-logo {
+            max-height: 200px;
+            width: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .hero-logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
         }
 
         .phase-badges {
@@ -231,14 +245,46 @@
             font-family: 'Outfit', 'Varela Round', sans-serif;
         }
 
+        /* Category Group */
+        .category-group {
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .category-label {
+            background: linear-gradient(45deg, var(--gold-border), #FFA500);
+            color: #000;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+            border: 2px solid var(--gold-border);
+        }
+
+        .category-line {
+            flex: 1;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-border), transparent);
+            border-radius: 2px;
+        }
+
         /* System Table */
         .systems-table {
             background: rgba(255,255,255,0.05);
             backdrop-filter: blur(15px);
             border-radius: 25px;
             padding: 40px;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            border: 3px solid var(--gold-border);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2), 0 0 30px rgba(255, 215, 0, 0.2);
+            margin-bottom: 30px;
         }
 
         .system-row {
@@ -365,63 +411,35 @@
             .main-title { font-size: 3rem; }
             .section-title { font-size: 3rem; }
             .phase-badges { gap: 20px; }
+            
+            .category-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .category-line {
+                display: none;
+            }
         }
 
         @media (max-width: 768px) {
             .main-title { font-size: 2.5rem; }
             .section-title { font-size: 2.5rem; }
-            .subtitle { font-size: 1.8rem; }
             .systems-table { padding: 20px; }
             .system-row { padding: 20px 0; }
             .nav-dots { display: none; }
             .section { padding: 40px 15px; }
+            
+            .hero-logo {
+                max-height: 120px;
+                padding: 15px;
+            }
+            
+            .category-label {
+                font-size: 1.1rem;
+                padding: 8px 20px;
+            }
         }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-            z-index: 20;
-        }
-
-        .arrow-down {
-            width: 0;
-            height: 0;
-            border-left: 25px solid transparent;
-            border-right: 25px solid transparent;
-            border-top: 25px solid var(--technoda-blue);
-            margin: 8px auto;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-15px); }
-            60% { transform: translateX(-50%) translateY(-8px); }
-        }
-        .technoda-logo-hero {
-    margin: 40px 0;
-    text-align: center;
-    animation: fadeInUp 2s ease 0.5s both;
-}
-
-.hero-logo {
-    max-height: 200px;
-    width: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
-}
-
-.hero-logo:hover {
-    transform: scale(1.05);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-}
     </style>
 </head>
 <body>
@@ -451,17 +469,15 @@
 
         <div class="hero-content">
             <h1 class="main-title">היכרות עם פלטפורמה לניהול האקתונים בטכנודע חדרה</h1>
-                <div class="technoda-logo-hero">
-        <img src="https://i.ibb.co/7JLyMMsq/technoda.png" alt="טכנודע" class="hero-logo">
-    </div>
+            <div class="technoda-logo-hero">
+                <img src="https://i.ibb.co/7JLyMMsq/technoda.png" alt="טכנודע" class="hero-logo">
+            </div>
             <div class="phase-badges">
                 <div class="phase-badge">הכנה לאירוע</div>
                 <div class="phase-badge">לוגיסטיקה</div>
                 <div class="phase-badge">יום השיא</div>
             </div>
         </div>
-
-
     </section>
 
     <!-- Section 2: הכנה לאירוע -->
@@ -499,186 +515,211 @@
         <div class="section-container">
             <h2 class="section-title">לוגיסטיקה</h2>
             
-            <div class="systems-table">
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>מערכת ניהול נוכחות</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/admin.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
+            <!-- מערכות ניהול -->
+            <div class="category-group">
+                <div class="category-header">
+                    <div class="category-label">מערכות ניהול</div>
+                    <div class="category-line"></div>
+                </div>
+                <div class="systems-table">
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>מערכת הזנת נוכחות</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/control.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            ממשק פשוט וידידותי להזנת נוכחות בזמן אמת, מותאם למתארגנים ולמדריכים בשטח.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/7DD3C6/ffffff?text=Control" alt="הזנת נוכחות" class="system-img" onclick="openModal(this.src)">
+                        </div>
                     </div>
-                    <div class="system-description">
-                        מערכת מתקדמת לניהול נוכחות המשתתפים, מעקב אחר הגעות ויציאות, ויצירת דוחות נוכחות מפורטים.
+
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>מערכת ניהול נוכחות</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/admin.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            מערכת מתקדמת לניהול נוכחות המשתתפים, מעקב אחר הגעות ויציאות, ויצירת דוחות נוכחות מפורטים.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/6B9BD1/ffffff?text=Admin" alt="מערכת ניהול" class="system-img" onclick="openModal(this.src)">
+                        </div>
                     </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/6B9BD1/ffffff?text=Admin" alt="מערכת ניהול" class="system-img" onclick="openModal(this.src)">
+
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>אישורי הגעה</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/approvedTeams.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            מערכת לעקב אחר אישורי ההגעה שהתקבלו מהמורים ולנהל את רשימות הקבוצות המאושרות.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/9FE86D/ffffff?text=Approved" alt="אישורי הגעה" class="system-img" onclick="openModal(this.src)">
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>מערכת הזנת נוכחות</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/control.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
+            <!-- לוח זמנים -->
+            <div class="category-group">
+                <div class="category-header">
+                    <div class="category-label">לוח זמנים</div>
+                    <div class="category-line"></div>
+                </div>
+                <div class="systems-table">
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>מערכת לוח זמנים מותאם</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/luz.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            יצירת לוח זמנים מותאם אישית לכל קבוצה עם פירוט מדויק של הפעילויות והמעבדות.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/F7B955/ffffff?text=Schedule" alt="לוח זמנים" class="system-img" onclick="openModal(this.src)">
+                        </div>
                     </div>
-                    <div class="system-description">
-                        ממשק פשוט וידידותי להזנת נוכחות בזמן אמת, מותאם למתארגנים ולמדריכים בשטח.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/7DD3C6/ffffff?text=Control" alt="הזנת נוכחות" class="system-img" onclick="openModal(this.src)">
+
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>לוח זמנים כללי</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/luz4all.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            תצוגה כוללת של לוחות הזמנים של כל הקבוצות למעקב כללי ותיאום פעילויות.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/E85D75/ffffff?text=All+Schedule" alt="לוח זמנים כללי" class="system-img" onclick="openModal(this.src)">
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>אישורי הגעה</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/approvedTeams.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
+            <!-- מחוללים -->
+            <div class="category-group">
+                <div class="category-header">
+                    <div class="category-label">מחוללים</div>
+                    <div class="category-line"></div>
+                </div>
+                <div class="systems-table">
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>הדפסת כרטיסיות שם</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/kartis.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            מערכת להדפסת כרטיסיות שם מעוצבות למשתתפים עם פרטים אישיים ופירוט קבוצה.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://i.ibb.co/20TLyVDb/download-1.jpg" alt="כרטיסיות שם" class="system-img" onclick="openModal(this.src)">
+                        </div>
                     </div>
-                    <div class="system-description">
-                        מערכת לעקב אחר אישורי ההגעה שהתקבלו מהמורים ולנהל את רשימות הקבוצות המאושרות.
+
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>מחולל כרטיסיות</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/addKartis.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            כלי ליצירה אוטומטית של כרטיסיות שם בכמויות גדולות עם התאמה אישית לכל משתתף.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/A584E8/ffffff?text=Generator" alt="מחולל כרטיסיות" class="system-img" onclick="openModal(this.src)">
+                        </div>
                     </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/9FE86D/ffffff?text=Approved" alt="אישורי הגעה" class="system-img" onclick="openModal(this.src)">
+
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>מחולל תעודות למשתתפים</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/addteuda.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            מערכת ליצירת תעודות השתתפות במקרים של שכחה או טעויות בשמות.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/D657A3/ffffff?text=Certificate" alt="מחולל תעודות" class="system-img" onclick="openModal(this.src)">
+                        </div>
+                    </div>
+
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>כרטיסיות עמדות</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/ontable.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            יצירת כרטיסיות לקבוצות לעמדות השונות במוזיאון המדע עם פירוט מיקומים ופעילויות.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/6B9BD1/ffffff?text=Tables" alt="כרטיסיות עמדות" class="system-img" onclick="openModal(this.src)">
+                        </div>
+                    </div>
+
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>תעודות למורים</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/teacher.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            מערכת ייעודית ליצירת תעודות הוקרה ותודה למורים המלווים שהשתתפו בפעילות.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/7DD3C6/ffffff?text=Teachers" alt="תעודות למורים" class="system-img" onclick="openModal(this.src)">
+                        </div>
+                    </div>
+
+         <div class="system-row">
+                        <div class="system-name">
+                            <h3>תעודות לתלמידים</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/teuda.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            מערכת להפקת תעודות השתתפות מעוצבות לכל התלמידים המשתתפים בתכנית.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/9FE86D/ffffff?text=Students" alt="תעודות לתלמידים" class="system-img" onclick="openModal(this.src)">
+                        </div>
+                    </div>
+
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>תעודות מודפסות לזוכים</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/winteuda.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            מערכת ליצירת תעודות מיוחדות ומעוצבות לזוכי התחרות והאקתון.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://i.ibb.co/gbWwcFYg/download-2.jpg" alt="תעודות זוכים" class="system-img" onclick="openModal(this.src)">
+                        </div>
                     </div>
                 </div>
-
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>מערכת לוח זמנים מותאם</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/luz.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
-                    </div>
-                    <div class="system-description">
-                        יצירת לוח זמנים מותאם אישית לכל קבוצה עם פירוט מדויק של הפעילויות והמעבדות.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/F7B955/ffffff?text=Schedule" alt="לוח זמנים" class="system-img" onclick="openModal(this.src)">
-                    </div>
-                </div>
-
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>לוח זמנים כללי</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/luz4all.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
-                    </div>
-                    <div class="system-description">
-                        תצוגה כוללת של לוחות הזמנים של כל הקבוצות למעקב כללי ותיאום פעילויות.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/E85D75/ffffff?text=All+Schedule" alt="לוח זמנים כללי" class="system-img" onclick="openModal(this.src)">
-                    </div>
-                </div>
-
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>הדפסת כרטיסיות שם</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/kartis.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
-                    </div>
-                    <div class="system-description">
-                        מערכת להדפסת כרטיסיות שם מעוצבות למשתתפים עם פרטים אישיים ופירוט קבוצה.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://i.ibb.co/20TLyVDb/download-1.jpg" alt="כרטיסיות שם" class="system-img" onclick="openModal(this.src)">
-                    </div>
-                </div>
-
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>מחולל כרטיסיות</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/addKartis.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
-                    </div>
-                    <div class="system-description">
-                        כלי ליצירה אוטומטית של כרטיסיות שם בכמויות גדולות עם התאמה אישית לכל משתתף.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/A584E8/ffffff?text=Generator" alt="מחולל כרטיסיות" class="system-img" onclick="openModal(this.src)">
-                    </div>
-                </div>
-
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>מחולל תעודות למשתתפים</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/addteuda.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
-                    </div>
-                    <div class="system-description">
-                        מערכת ליצירת תעודות השתתפות במקרים של שכחה או טעויות בשמות.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/D657A3/ffffff?text=Certificate" alt="מחולל תעודות" class="system-img" onclick="openModal(this.src)">
-                    </div>
-                </div>
-
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>כרטיסיות עמדות</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/ontable.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
-                    </div>
-                    <div class="system-description">
-                        יצירת כרטיסיות לקבוצות לעמדות השונות במוזיאון המדע עם פירוט מיקומים ופעילויות.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/6B9BD1/ffffff?text=Tables" alt="כרטיסיות עמדות" class="system-img" onclick="openModal(this.src)">
-                    </div>
-                </div>
-
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>תעודות למורים</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/teacher.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
-                    </div>
-                    <div class="system-description">
-                        מערכת ייעודית ליצירת תעודות הוקרה ותודה למורים המלווים שהשתתפו בפעילות.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/7DD3C6/ffffff?text=Teachers" alt="תעודות למורים" class="system-img" onclick="openModal(this.src)">
-                    </div>
-                </div>
-
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>תעודות לתלמידים</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/teuda.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
-                    </div>
-                    <div class="system-description">
-                        מערכת להפקת תעודות השתתפות מעוצבות לכל התלמידים המשתתפים בתכנית.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/9FE86D/ffffff?text=Students" alt="תעודות לתלמידים" class="system-img" onclick="openModal(this.src)">
-                    </div>
-                </div>
-
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>תעודות מודפסות לזוכים</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/winteuda.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
-                    </div>
-                    <div class="system-description">
-                        מערכת ליצירת תעודות מיוחדות ומעוצבות לזוכי התחרות והאקתון.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://i.ibb.co/gbWwcFYg/download-2.jpg" alt="תעודות זוכים" class="system-img" onclick="openModal(this.src)">
-                    </div>
-                    </div>
             </div>
         </div>
     </section>
@@ -691,184 +732,209 @@
         <div class="section-container">
             <h2 class="section-title">יום השיא</h2>
             
-            <div class="systems-table">
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>דוגמא לספר פרויקט מוכן</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/droneSpresso.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
+            <!-- במעבדות הפעילות -->
+            <div class="category-group">
+                <div class="category-header">
+                    <div class="category-label">במעבדות הפעילות</div>
+                    <div class="category-line"></div>
+                </div>
+                <div class="systems-table">
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>דוגמא לספר פרויקט מוכן</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/droneSpresso.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            דוגמא מלאה של ספר פרויקט מוכן המדגימה את המבנה והתוכן הנדרש מהתלמידים.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/6B9BD1/ffffff?text=Demo+Book" alt="דוגמא ספר פרויקט" class="system-img" onclick="openModal(this.src)">
+                        </div>
                     </div>
-                    <div class="system-description">
-                        דוגמא מלאה של ספר פרויקט מוכן המדגימה את המבנה והתוכן הנדרש מהתלמידים.
+
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>יוצר ספר פרויקט</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/book.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            כלי ליצירת ספרי פרויקט דיגיטליים עם תבניות מעוצבות ותוכן מובנה.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://i.ibb.co/LhbVsCYk/download.jpg" alt="יוצר ספר פרויקט" class="system-img" onclick="openModal(this.src)">
+                        </div>
                     </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/6B9BD1/ffffff?text=Demo+Book" alt="דוגמא ספר פרויקט" class="system-img" onclick="openModal(this.src)">
+
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>עמדת ניהול ספר פרויקט</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/viewbook.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            עמדת עבודה לניהול ספרי הפרויקט, הדפסה וכריכה של הפרויקטים הסופיים.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/7DD3C6/ffffff?text=View+Book" alt="עמדת ניהול" class="system-img" onclick="openModal(this.src)">
+                        </div>
+                    </div>
+
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>מערכת שיווק ויצירה</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/ad.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            מערכת מלווה לחלק השיווקי והיצירתי של הפרויקטים עם כלים לעיצוב ופרסום.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/9FE86D/ffffff?text=Marketing" alt="מערכת שיווק" class="system-img" onclick="openModal(this.src)">
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>יוצר ספר פרויקט</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/book.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
+            <!-- שיפוט -->
+            <div class="category-group">
+                <div class="category-header">
+                    <div class="category-label">שיפוט</div>
+                    <div class="category-line"></div>
+                </div>
+                <div class="systems-table">
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>מערכת שיפוט למדריכים</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/ref.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            מערכת שיפוט ייעודית למדריכים במעבדות להערכת התקדמות הקבוצות.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/F7B955/ffffff?text=Lab+Judge" alt="שיפוט מדריכים" class="system-img" onclick="openModal(this.src)">
+                        </div>
                     </div>
-                    <div class="system-description">
-                        כלי ליצירת ספרי פרויקט דיגיטליים עם תבניות מעוצבות ותוכן מובנה.
+
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>מערכת שיפוט לשופטים</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/ref2.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            מערכת שיפוט מתקדמת לשופטים לאחר הצגת הפרויקטים הסופיים.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/E85D75/ffffff?text=Judges" alt="שיפוט שופטים" class="system-img" onclick="openModal(this.src)">
+                        </div>
                     </div>
-                    <div class="system-image">
-                        <img src="https://i.ibb.co/LhbVsCYk/download.jpg" alt="יוצר ספר פרויקט" class="system-img" onclick="openModal(this.src)">
+
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>מערכת חישוב זוכים</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/winners.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            מערכת אוטומטית המשקללת את הציונים ומסדרת את הקבוצות לפי הסדר הסופי.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/A584E8/ffffff?text=Winners" alt="חישוב זוכים" class="system-img" onclick="openModal(this.src)">
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>עמדת ניהול ספר פרויקט</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/viewBook.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
-                    </div>
-                    <div class="system-description">
-                        עמדת עבודה לניהול ספרי הפרויקט, הדפסה וכריכה של הפרויקטים הסופיים.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/7DD3C6/ffffff?text=View+Book" alt="עמדת ניהול" class="system-img" onclick="openModal(this.src)">
-                    </div>
+            <!-- הקרנות -->
+            <div class="category-group">
+                <div class="category-header">
+                    <div class="category-label">הקרנות</div>
+                    <div class="category-line"></div>
                 </div>
+                <div class="systems-table">
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>לוח קבוצות - מיקום ראשוני</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/screen.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            תצוגה מרכזית המציגת היכן כל קבוצה צריכה להיות בתחילת היום.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/D657A3/ffffff?text=Screen1" alt="לוח קבוצות" class="system-img" onclick="openModal(this.src)">
+                        </div>
+                    </div>
 
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>מערכת שיווק ויצירה</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/ad.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>לוח מעקב במהלך היום</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/screen2.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            תצוגה דינמית הנמצאת במהלך היום בטלוויזיות לעדכון מתמיד של המשתתפים.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/6B9BD1/ffffff?text=Screen2" alt="לוח מעקב" class="system-img" onclick="openModal(this.src)">
+                        </div>
                     </div>
-                    <div class="system-description">
-                        מערכת מלווה לחלק השיווקי והיצירתי של הפרויקטים עם כלים לעיצוב ופרסום.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/9FE86D/ffffff?text=Marketing" alt="מערכת שיווק" class="system-img" onclick="openModal(this.src)">
-                    </div>
-                </div>
 
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>מערכת שיפוט למדריכים</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/ref.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>תצוגה מעבדות 1-2</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/tv12.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            תצוגה ייעודית הנמצאת מעל מעבדות 1-2 עם מידע רלוונטי לאזור זה.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/7DD3C6/ffffff?text=TV+1-2" alt="תצוגה מעבדות 1-2" class="system-img" onclick="openModal(this.src)">
+                        </div>
                     </div>
-                    <div class="system-description">
-                        מערכת שיפוט ייעודית למדריכים במעבדות להערכת התקדמות הקבוצות.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/F7B955/ffffff?text=Lab+Judge" alt="שיפוט מדריכים" class="system-img" onclick="openModal(this.src)">
-                    </div>
-                </div>
 
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>מערכת שיפוט לשופטים</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/ref2.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>תצוגה מעבדות 3-4</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/tv34.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            תצוגה ייעודית הנמצאת מעל מעבדות 3-4 עם מידע רלוונטי לאזור זה.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/9FE86D/ffffff?text=TV+3-4" alt="תצוגה מעבדות 3-4" class="system-img" onclick="openModal(this.src)">
+                        </div>
                     </div>
-                    <div class="system-description">
-                        מערכת שיפוט מתקדמת לשופטים לאחר הצגת הפרויקטים הסופיים.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/E85D75/ffffff?text=Judges" alt="שיפוט שופטים" class="system-img" onclick="openModal(this.src)">
-                    </div>
-                </div>
 
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>מערכת חישוב זוכים</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/winners.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
-                    </div>
-                    <div class="system-description">
-                        מערכת אוטומטית המשקללת את הציונים ומסדרת את הקבוצות לפי הסדר הסופי.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/A584E8/ffffff?text=Winners" alt="חישוב זוכים" class="system-img" onclick="openModal(this.src)">
-                    </div>
-                </div>
-
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>לוח קבוצות - מיקום ראשוני</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/screen.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
-                    </div>
-                    <div class="system-description">
-                        תצוגה מרכזית המציגת היכן כל קבוצה צריכה להיות בתחילת היום.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/D657A3/ffffff?text=Screen1" alt="לוח קבוצות" class="system-img" onclick="openModal(this.src)">
-                    </div>
-                </div>
-
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>לוח מעקב במהלך היום</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/screen2.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
-                    </div>
-                    <div class="system-description">
-                        תצוגה דינמית הנמצאת במהלך היום בטלוויזיות לעדכון מתמיד של המשתתפים.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/6B9BD1/ffffff?text=Screen2" alt="לוח מעקב" class="system-img" onclick="openModal(this.src)">
-                    </div>
-                </div>
-
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>תצוגה מעבדות 1-2</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/tv12.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
-                    </div>
-                    <div class="system-description">
-                        תצוגה ייעודית הנמצאת מעל מעבדות 1-2 עם מידע רלוונטי לאזור זה.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/7DD3C6/ffffff?text=TV+1-2" alt="תצוגה מעבדות 1-2" class="system-img" onclick="openModal(this.src)">
-                    </div>
-                </div>
-
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>תצוגה מעבדות 3-4</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/tv34.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
-                    </div>
-                    <div class="system-description">
-                        תצוגה ייעודית הנמצאת מעל מעבדות 3-4 עם מידע רלוונטי לאזור זה.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/9FE86D/ffffff?text=TV+3-4" alt="תצוגה מעבדות 3-4" class="system-img" onclick="openModal(this.src)">
-                    </div>
-                </div>
-
-                <div class="system-row">
-                    <div class="system-name">
-                        <h3>תצוגה מעבדות 5-6</h3>
-                        <a href="https://snirsnir.github.io/mamtziDay/tv56.html" target="_blank" class="system-link">
-                            כניסה למערכת
-                        </a>
-                    </div>
-                    <div class="system-description">
-                        תצוגה ייעודית הנמצאת מעל מעבדות 5-6 עם מידע רלוונטי לאזור זה.
-                    </div>
-                    <div class="system-image">
-                        <img src="https://via.placeholder.com/100x80/F7B955/ffffff?text=TV+5-6" alt="תצוגה מעבדות 5-6" class="system-img" onclick="openModal(this.src)">
+                    <div class="system-row">
+                        <div class="system-name">
+                            <h3>תצוגה מעבדות 5-6</h3>
+                            <a href="https://snirsnir.github.io/mamtziDay/tv56.html" target="_blank" class="system-link">
+                                כניסה למערכת
+                            </a>
+                        </div>
+                        <div class="system-description">
+                            תצוגה ייעודית הנמצאת מעל מעבדות 5-6 עם מידע רלוונטי לאזור זה.
+                        </div>
+                        <div class="system-image">
+                            <img src="https://via.placeholder.com/100x80/F7B955/ffffff?text=TV+5-6" alt="תצוגה מעבדות 5-6" class="system-img" onclick="openModal(this.src)">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -908,30 +974,6 @@
             });
         }
 
-        // Improved wheel handler
-        let wheelTimeout;
-        let wheelDelta = 0;
-        
-        function handleWheel(e) {
-            if (isScrolling || modalOpen) return;
-            
-            clearTimeout(wheelTimeout);
-            wheelDelta += e.deltaY;
-            
-            wheelTimeout = setTimeout(() => {
-                if (Math.abs(wheelDelta) > 50) {
-                    e.preventDefault();
-                    
-                    if (wheelDelta > 0 && currentSection < totalSections - 1) {
-                        scrollToSection(currentSection + 1);
-                    } else if (wheelDelta < 0 && currentSection > 0) {
-                        scrollToSection(currentSection - 1);
-                    }
-                }
-                wheelDelta = 0;
-            }, 100);
-        }
-
         // Navigation dots click events
         navDots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
@@ -941,19 +983,15 @@
             });
         });
 
-        // Wheel event listener
-        //window.addEventListener('wheel', handleWheel, { passive: false });
-
-        // Keyboard navigation
-window.addEventListener('keydown', (e) => {
-    if (isScrolling || modalOpen) return;
-    
-    // רק ESC לסגירת מודל
-    if (e.key === 'Escape' && modalOpen) {
-        closeModal();
-    }
-    // הוסר ניווט בחצים
-});
+        // Keyboard navigation (only ESC for modal)
+        window.addEventListener('keydown', (e) => {
+            if (isScrolling || modalOpen) return;
+            
+            // רק ESC לסגירת מודל
+            if (e.key === 'Escape' && modalOpen) {
+                closeModal();
+            }
+        });
 
         // Modal functionality
         function openModal(imageSrc) {
@@ -1005,30 +1043,6 @@ window.addEventListener('keydown', (e) => {
         // Observe all sections
         sections.forEach(section => {
             observer.observe(section);
-        });
-
-        // Touch support for mobile
-        let touchStartY = 0;
-        let touchEndY = 0;
-
-        window.addEventListener('touchstart', (e) => {
-            touchStartY = e.changedTouches[0].screenY;
-        });
-
-        window.addEventListener('touchend', (e) => {
-            if (isScrolling || modalOpen) return;
-            
-            touchEndY = e.changedTouches[0].screenY;
-            const swipeThreshold = 80;
-            const diff = touchStartY - touchEndY;
-            
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0 && currentSection < totalSections - 1) {
-                    scrollToSection(currentSection + 1);
-                } else if (diff < 0 && currentSection > 0) {
-                    scrollToSection(currentSection - 1);
-                }
-            }
         });
 
         // Initialize on load
