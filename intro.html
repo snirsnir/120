@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>פלטפורמה לניהול האקתונים - טכנודע</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Bellefair&family=Outfit:wght@100..900&family=Playpen+Sans+Hebrew:wght@100..800&family=Varela+Round&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --technoda-blue: #6B9BD1;
+            --technoda-turquoise: #7DD3C6;
+            --technoda-green: #9FE86D;
+            --technoda-purple: #A584E8;
+            --technoda-magenta: #E85D75;
+            --technoda-orange: #F7B955;
+            --technoda-yellow: #F8E755;
+            --nashim-purple: #D657A3;
+            --dark-bg: #2C3E50;
+            --light-bg: #F8F9FA;
+        }
+
+        body {
+            font-family: 'Varela Round', 'Arimo', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 30%, #0f3460 60%, #2c5f2d 100%);
+        }
+
+        .section {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 60px 20px;
+        }
+
+        /* Navigation dots */
+        .nav-dots {
+            position: fixed;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: var(--technoda-blue);
+            transform: scale(1.3);
+        }
+
+        /* Animated background elements */
+        .bg-element {
+            position: absolute;
+            opacity: 0.15;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .molecule {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, var(--technoda-turquoise), transparent);
+            border-radius: 50%;
+        }
+
+        .dna-strand {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, var(--technoda-green), var(--technoda-blue));
+            transform: rotate(45deg);
+            border-radius: 15px;
+        }
+
+        .circuit {
+            width: 100px;
+            height: 100px;
+            border: 2px solid var(--technoda-orange);
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .circuit::before {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background: var(--technoda-orange);
+            top: 50%;
+            left: 25%;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+
+        /* Section 1 - Hero */
+        .section-1 {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 30%, #0f3460 60%, #2c5f2d 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(123, 211, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(159, 232, 109, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(247, 185, 85, 0.3) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            z-index: 10;
+            animation: fadeInUp 2s ease;
+            max-width: 1400px;
+            width: 100%;
+            position: relative;
+        }
+
+        .main-title {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 60px 0;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            font-family: 'Outfit', 'Varela Round', sans-serif;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 2.2rem;
+            margin-bottom: 80px;
+            color: #ffffff;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .phase-badges {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .phase-badge {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            padding: 20px 30px;
+            border-radius: 50px;
+            border: 2px solid rgba(255,255,255,0.2);
+            color: var(--technoda-yellow);
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .phase-badge:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: linear-gradient(135deg, #1a2332 0%, #243447 30%, #2d4a5c 60%, #3a6b7d 100%);
+            color: white;
+            position: relative;
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(125, 221, 198, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(159, 232, 109, 0.2) 0%, transparent 50%);
+        }
+
+        .section-container {
+            max-width: 1400px;
+            width: 100%;
+            z-index: 10;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--technoda-yellow);
+            margin-bottom: 60px;
+            text-align: center;
+            font-family: 'Outfit', 'Varela Round', sans-serif;
+        }
+
+        /* System Table */
+        .systems-table {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .system-row {
+            display: grid;
+            grid-template-columns: 2fr 3fr 1fr;
+            gap: 30px;
+            align-items: center;
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .system-row:last-child {
+            border-bottom: none;
+        }
+
+        .system-name {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .system-name h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--technoda-turquoise);
+            margin-bottom: 10px;
+        }
+
+        .system-link {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--technoda-blue), var(--technoda-turquoise));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .system-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, var(--technoda-turquoise), var(--technoda-green));
+        }
+
+        .system-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .system-image {
+            text-align: center;
+        }
+
+        .system-img {
+            max-width: 100px;
+            max-height: 80px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .system-img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Modal for images */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close:hover {
+            color: var(--technoda-yellow);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .system-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .main-title { font-size: 3rem; }
+            .section-title { font-size: 3rem; }
+            .phase-badges { gap: 20px; }
+        }
+
+        @media (max-width: 768px) {
+            .main-title { font-size: 2.5rem; }
+            .section-title { font-size: 2.5rem; }
+            .subtitle { font-size: 1.8rem; }
+            .systems-table { padding: 20px; }
+            .system-row { padding: 20px 0; }
+            .nav-dots { display: none; }
+            .section { padding: 40px 15px; }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            z-index: 20;
+        }
+
+        .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-top: 25px solid var(--technoda-blue);
+            margin: 8px auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-15px); }
+            60% { transform: translateX(-50%) translateY(-8px); }
+        }
+        .technoda-logo-hero {
+    margin: 40px 0;
+    text-align: center;
+    animation: fadeInUp 2s ease 0.5s both;
+}
+
+.hero-logo {
+    max-height: 200px;
+    width: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.hero-logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+    </style>
+</head>
+<body>
+
+    <!-- Navigation dots -->
+    <div class="nav-dots">
+        <div class="nav-dot active" data-section="0"></div>
+        <div class="nav-dot" data-section="1"></div>
+        <div class="nav-dot" data-section="2"></div>
+        <div class="nav-dot" data-section="3"></div>
+    </div>
+
+    <!-- Modal for images -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" class="modal-img" src="" alt="">
+        </div>
+    </div>
+
+    <!-- Section 1: Hero -->
+    <section class="section section-1">
+        <!-- Background elements -->
+        <div class="bg-element molecule" style="top: 15%; right: 15%; animation-delay: 0s;"></div>
+        <div class="bg-element dna-strand" style="top: 70%; left: 10%; animation-delay: 1s;"></div>
+        <div class="bg-element circuit" style="top: 30%; left: 80%; animation-delay: 2s;"></div>
+
+        <div class="hero-content">
+            <h1 class="main-title">היכרות עם פלטפורמה לניהול האקתונים בטכנודע חדרה</h1>
+                <div class="technoda-logo-hero">
+        <img src="https://i.ibb.co/7JLyMMsq/technoda.png" alt="טכנודע" class="hero-logo">
+    </div>
+            <div class="phase-badges">
+                <div class="phase-badge">הכנה לאירוע</div>
+                <div class="phase-badge">לוגיסטיקה</div>
+                <div class="phase-badge">יום השיא</div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="arrow-down"></div>
+            <div class="arrow-down"></div>
+            <div class="arrow-down"></div>
+        </div>
+    </section>
+
+    <!-- Section 2: הכנה לאירוע -->
+    <section class="section content-section">
+        <div class="bg-element molecule" style="top: 20%; left: 10%; animation-delay: 0.5s;"></div>
+        <div class="bg-element dna-strand" style="top: 60%; right: 15%; animation-delay: 1.5s;"></div>
+        
+        <div class="section-container">
+            <h2 class="section-title">הכנה לאירוע</h2>
+            
+            <div class="systems-table">
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>פלטפורמה לרישום וקבלת מידע חשוב</h3>
+                        <a href="https://snirsnir.github.io/mamtzi2025/index.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        המערכת מוטמעת באתר הטכנודע בה המשתתפים נרשמים לפעילות, מקבלים קישורים רלוונטים ומידע חשוב.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://i.ibb.co/35fWR074/2025-09-17-093815.png" alt="פלטפורמה לרישום" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: לוגיסטיקה -->
+    <section class="section content-section">
+        <div class="bg-element circuit" style="top: 15%; right: 20%; animation-delay: 1s;"></div>
+        <div class="bg-element molecule" style="top: 75%; left: 20%; animation-delay: 2s;"></div>
+        
+        <div class="section-container">
+            <h2 class="section-title">לוגיסטיקה</h2>
+            
+            <div class="systems-table">
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>מערכת ניהול נוכחות</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/admin.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        מערכת מתקדמת לניהול נוכחות המשתתפים, מעקב אחר הגעות ויציאות, ויצירת דוחות נוכחות מפורטים.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/6B9BD1/ffffff?text=Admin" alt="מערכת ניהול" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>מערכת הזנת נוכחות</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/control.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        ממשק פשוט וידידותי להזנת נוכחות בזמן אמת, מותאם למתארגנים ולמדריכים בשטח.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/7DD3C6/ffffff?text=Control" alt="הזנת נוכחות" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>אישורי הגעה</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/approvedTeams.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        מערכת לעקב אחר אישורי ההגעה שהתקבלו מהמורים ולנהל את רשימות הקבוצות המאושרות.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/9FE86D/ffffff?text=Approved" alt="אישורי הגעה" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>מערכת לוח זמנים מותאם</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/luz.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        יצירת לוח זמנים מותאם אישית לכל קבוצה עם פירוט מדויק של הפעילויות והמעבדות.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/F7B955/ffffff?text=Schedule" alt="לוח זמנים" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>לוח זמנים כללי</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/luz4all.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        תצוגה כוללת של לוחות הזמנים של כל הקבוצות למעקב כללי ותיאום פעילויות.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/E85D75/ffffff?text=All+Schedule" alt="לוח זמנים כללי" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>הדפסת כרטיסיות שם</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/kartis.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        מערכת להדפסת כרטיסיות שם מעוצבות למשתתפים עם פרטים אישיים ופירוט קבוצה.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://i.ibb.co/20TLyVDb/download-1.jpg" alt="כרטיסיות שם" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>מחולל כרטיסיות</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/addKartis.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        כלי ליצירה אוטומטית של כרטיסיות שם בכמויות גדולות עם התאמה אישית לכל משתתף.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/A584E8/ffffff?text=Generator" alt="מחולל כרטיסיות" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>מחולל תעודות למשתתפים</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/addteuda.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        מערכת ליצירת תעודות השתתפות במקרים של שכחה או טעויות בשמות.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/D657A3/ffffff?text=Certificate" alt="מחולל תעודות" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>כרטיסיות עמדות</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/ontable.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        יצירת כרטיסיות לקבוצות לעמדות השונות במוזיאון המדע עם פירוט מיקומים ופעילויות.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/6B9BD1/ffffff?text=Tables" alt="כרטיסיות עמדות" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>תעודות למורים</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/teacher.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        מערכת ייעודית ליצירת תעודות הוקרה ותודה למורים המלווים שהשתתפו בפעילות.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/7DD3C6/ffffff?text=Teachers" alt="תעודות למורים" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>תעודות לתלמידים</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/teuda.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        מערכת להפקת תעודות השתתפות מעוצבות לכל התלמידים המשתתפים בתכנית.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/9FE86D/ffffff?text=Students" alt="תעודות לתלמידים" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>תעודות מודפסות לזוכים</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/winteuda.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        מערכת ליצירת תעודות מיוחדות ומעוצבות לזוכי התחרות והאקתון.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://i.ibb.co/gbWwcFYg/download-2.jpg" alt="תעודות זוכים" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: יום השיא -->
+    <section class="section content-section">
+        <div class="bg-element dna-strand" style="top: 15%; right: 10%; animation-delay: 0.5s;"></div>
+        <div class="bg-element molecule" style="top: 75%; left: 15%; animation-delay: 1.5s;"></div>
+        
+        <div class="section-container">
+            <h2 class="section-title">יום השיא</h2>
+            
+            <div class="systems-table">
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>דוגמא לספר פרויקט מוכן</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/droneSpresso.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        דוגמא מלאה של ספר פרויקט מוכן המדגימה את המבנה והתוכן הנדרש מהתלמידים.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/6B9BD1/ffffff?text=Demo+Book" alt="דוגמא ספר פרויקט" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>יוצר ספר פרויקט</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/book.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        כלי ליצירת ספרי פרויקט דיגיטליים עם תבניות מעוצבות ותוכן מובנה.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://i.ibb.co/LhbVsCYk/download.jpg" alt="יוצר ספר פרויקט" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>עמדת ניהול ספר פרויקט</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/viewBook.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        עמדת עבודה לניהול ספרי הפרויקט, הדפסה וכריכה של הפרויקטים הסופיים.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/7DD3C6/ffffff?text=View+Book" alt="עמדת ניהול" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>מערכת שיווק ויצירה</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/ad.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        מערכת מלווה לחלק השיווקי והיצירתי של הפרויקטים עם כלים לעיצוב ופרסום.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/9FE86D/ffffff?text=Marketing" alt="מערכת שיווק" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>מערכת שיפוט למדריכים</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/ref.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        מערכת שיפוט ייעודית למדריכים במעבדות להערכת התקדמות הקבוצות.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/F7B955/ffffff?text=Lab+Judge" alt="שיפוט מדריכים" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>מערכת שיפוט לשופטים</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/ref2.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        מערכת שיפוט מתקדמת לשופטים לאחר הצגת הפרויקטים הסופיים.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/E85D75/ffffff?text=Judges" alt="שיפוט שופטים" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>מערכת חישוב זוכים</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/winners.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        מערכת אוטומטית המשקללת את הציונים ומסדרת את הקבוצות לפי הסדר הסופי.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/A584E8/ffffff?text=Winners" alt="חישוב זוכים" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>לוח קבוצות - מיקום ראשוני</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/screen.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        תצוגה מרכזית המציגת היכן כל קבוצה צריכה להיות בתחילת היום.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/D657A3/ffffff?text=Screen1" alt="לוח קבוצות" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>לוח מעקב במהלך היום</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/screen2.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        תצוגה דינמית הנמצאת במהלך היום בטלוויזיות לעדכון מתמיד של המשתתפים.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/6B9BD1/ffffff?text=Screen2" alt="לוח מעקב" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>תצוגה מעבדות 1-2</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/tv12.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        תצוגה ייעודית הנמצאת מעל מעבדות 1-2 עם מידע רלוונטי לאזור זה.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/7DD3C6/ffffff?text=TV+1-2" alt="תצוגה מעבדות 1-2" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>תצוגה מעבדות 3-4</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/tv34.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        תצוגה ייעודית הנמצאת מעל מעבדות 3-4 עם מידע רלוונטי לאזור זה.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/9FE86D/ffffff?text=TV+3-4" alt="תצוגה מעבדות 3-4" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="system-row">
+                    <div class="system-name">
+                        <h3>תצוגה מעבדות 5-6</h3>
+                        <a href="https://snirsnir.github.io/mamtziDay/tv56.html" target="_blank" class="system-link">
+                            כניסה למערכת
+                        </a>
+                    </div>
+                    <div class="system-description">
+                        תצוגה ייעודית הנמצאת מעל מעבדות 5-6 עם מידע רלוונטי לאזור זה.
+                    </div>
+                    <div class="system-image">
+                        <img src="https://via.placeholder.com/100x80/F7B955/ffffff?text=TV+5-6" alt="תצוגה מעבדות 5-6" class="system-img" onclick="openModal(this.src)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Enhanced scroll behavior
+        let currentSection = 0;
+        const sections = document.querySelectorAll('.section');
+        const navDots = document.querySelectorAll('.nav-dot');
+        const totalSections = sections.length;
+        let isScrolling = false;
+        let modalOpen = false;
+
+        // Smooth scroll to section
+        function scrollToSection(index) {
+            if (index >= 0 && index < totalSections && index !== currentSection) {
+                isScrolling = true;
+                sections[index].scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                updateNavDots(index);
+                currentSection = index;
+                
+                setTimeout(() => {
+                    isScrolling = false;
+                }, 1000);
+            }
+        }
+
+        // Update navigation dots
+        function updateNavDots(activeIndex) {
+            navDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === activeIndex);
+            });
+        }
+
+        // Improved wheel handler
+        let wheelTimeout;
+        let wheelDelta = 0;
+        
+        function handleWheel(e) {
+            if (isScrolling || modalOpen) return;
+            
+            clearTimeout(wheelTimeout);
+            wheelDelta += e.deltaY;
+            
+            wheelTimeout = setTimeout(() => {
+                if (Math.abs(wheelDelta) > 50) {
+                    e.preventDefault();
+                    
+                    if (wheelDelta > 0 && currentSection < totalSections - 1) {
+                        scrollToSection(currentSection + 1);
+                    } else if (wheelDelta < 0 && currentSection > 0) {
+                        scrollToSection(currentSection - 1);
+                    }
+                }
+                wheelDelta = 0;
+            }, 100);
+        }
+
+        // Navigation dots click events
+        navDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                if (!isScrolling) {
+                    scrollToSection(index);
+                }
+            });
+        });
+
+        // Wheel event listener
+        //window.addEventListener('wheel', handleWheel, { passive: false });
+
+        // Keyboard navigation
+window.addEventListener('keydown', (e) => {
+    if (isScrolling || modalOpen) return;
+    
+    // רק ESC לסגירת מודל
+    if (e.key === 'Escape' && modalOpen) {
+        closeModal();
+    }
+    // הוסר ניווט בחצים
+});
+
+        // Modal functionality
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImg.src = imageSrc;
+            document.body.style.overflow = 'hidden';
+            modalOpen = true;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            modalOpen = false;
+        }
+
+        // Close modal when clicking outside or on X
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        document.querySelector('.close').onclick = closeModal;
+
+        // Intersection Observer for section tracking
+        const observerOptions = {
+            threshold: 0.7,
+            rootMargin: '0px 0px -10% 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            if (isScrolling) return;
+            
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionIndex = Array.from(sections).indexOf(entry.target);
+                    if (sectionIndex !== currentSection && sectionIndex >= 0) {
+                        currentSection = sectionIndex;
+                        updateNavDots(sectionIndex);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Touch support for mobile
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        window.addEventListener('touchstart', (e) => {
+            touchStartY = e.changedTouches[0].screenY;
+        });
+
+        window.addEventListener('touchend', (e) => {
+            if (isScrolling || modalOpen) return;
+            
+            touchEndY = e.changedTouches[0].screenY;
+            const swipeThreshold = 80;
+            const diff = touchStartY - touchEndY;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0 && currentSection < totalSections - 1) {
+                    scrollToSection(currentSection + 1);
+                } else if (diff < 0 && currentSection > 0) {
+                    scrollToSection(currentSection - 1);
+                }
+            }
+        });
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            updateNavDots(0);
+        });
+
+        // ESC key to close modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modalOpen) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
